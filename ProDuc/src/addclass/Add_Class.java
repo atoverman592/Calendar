@@ -49,7 +49,7 @@ public class Add_Class {
 	private JTextField txtLocation;
 	private JTextField txtTeacher;
 	
-	private String smallLogo = "/icons/ProDuc Logo 70x70.png";
+	private String smallLogo = "/icons/ProDuc Logo v1 70x70.png";
 	private String largeLogo = "/icons/ProDuc Logo v1.png";
 
 	/**
@@ -105,7 +105,7 @@ public class Add_Class {
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblAddClass = new JLabel("Add Class");
+		JLabel lblAddClass = new JLabel("Add Course");
 		lblAddClass.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAddClass.setForeground(new Color(255, 255, 255));
 		lblAddClass.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -285,7 +285,7 @@ public class Add_Class {
 		btnDone.setBackground(new Color(255, 215, 0));
 						
 		frmProducAddClass.setBackground(new Color(135, 206, 250));
-		frmProducAddClass.setTitle("ProDuc - Add Class");
+		frmProducAddClass.setTitle("ProDuc - Add Course");
 		frmProducAddClass.setResizable(false);
 		frmProducAddClass.setBounds(100, 100, 300, 525);
 		frmProducAddClass.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
