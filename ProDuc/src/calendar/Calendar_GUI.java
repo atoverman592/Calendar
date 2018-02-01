@@ -87,124 +87,160 @@ public class Calendar_GUI {
 		JPanel jan2018 = new JPanel();
 		jan2018.setBackground(new Color(135, 206, 250));
 		year2018.addTab("January", null, jan2018, null);
+		
+	//
 		jan2018.setLayout(new GridLayout(0, 7, 0, 0));
 		
-		JLabel lblSunday = new JLabel("Sunday");
-		lblSunday.setHorizontalAlignment(SwingConstants.CENTER);
-		jan2018.add(lblSunday);
+		JLabel jan2018LblSunday = new JLabel("Sunday");
+		jan2018LblSunday.setHorizontalAlignment(SwingConstants.CENTER);
+		jan2018.add(jan2018LblSunday);
 		
-		JLabel lblMonday = new JLabel("Monday");
-		lblMonday.setHorizontalAlignment(SwingConstants.CENTER);
-		jan2018.add(lblMonday);
+		JLabel jan2018LblMonday = new JLabel("Monday");
+		jan2018LblMonday.setHorizontalAlignment(SwingConstants.CENTER);
+		jan2018.add(jan2018LblMonday);
 		
-		JLabel lblTuesday = new JLabel("Tuesday");
-		lblTuesday.setHorizontalAlignment(SwingConstants.CENTER);
-		jan2018.add(lblTuesday);
+		JLabel jan2018LblTuesday = new JLabel("Tuesday");
+		jan2018LblTuesday.setHorizontalAlignment(SwingConstants.CENTER);
+		jan2018.add(jan2018LblTuesday);
 		
-		JLabel lblWednesday = new JLabel("Wednesday");
-		lblWednesday.setHorizontalAlignment(SwingConstants.CENTER);
-		jan2018.add(lblWednesday);
+		JLabel jan2018LblWednesday = new JLabel("Wednesday");
+		jan2018LblWednesday.setHorizontalAlignment(SwingConstants.CENTER);
+		jan2018.add(jan2018LblWednesday);
 		
-		JLabel lblThursday = new JLabel("Thursday");
-		lblThursday.setHorizontalAlignment(SwingConstants.CENTER);
-		jan2018.add(lblThursday);
+		JLabel jan2018LblThursday = new JLabel("Thursday");
+		jan2018LblThursday.setHorizontalAlignment(SwingConstants.CENTER);
+		jan2018.add(jan2018LblThursday);
 		
-		JLabel lblFriday = new JLabel("Friday");
-		lblFriday.setHorizontalAlignment(SwingConstants.CENTER);
-		jan2018.add(lblFriday);
+		JLabel jan2018LblFriday = new JLabel("Friday");
+		jan2018LblFriday.setHorizontalAlignment(SwingConstants.CENTER);
+		jan2018.add(jan2018LblFriday);
 		
-		JLabel lblSaturday = new JLabel("Saturday");
-		lblSaturday.setHorizontalAlignment(SwingConstants.CENTER);
-		jan2018.add(lblSaturday);
+		JLabel jan2018LblSaturday = new JLabel("Saturday");
+		jan2018LblSaturday.setHorizontalAlignment(SwingConstants.CENTER);
+		jan2018.add(jan2018LblSaturday);
 		
-		JButton button0 = new JButton("");
-		JButton button1 = new JButton("");
-		JButton button2 = new JButton("");
-		JButton button3 = new JButton("");
-		JButton button4 = new JButton("");
-		JButton button5 = new JButton("");
+		//JButton jan2018Button0 = new JButton("");
+		//JButton jan2018Button1 = new JButton("");
+		//JButton jan2018Button2 = new JButton("");
+		//JButton jan2018Button3 = new JButton("");
+		//JButton jan2018Button4 = new JButton("");
+		//JButton jan2018Button5 = new JButton("");
 		
-		button0.setBackground(new Color(135, 206, 250));
-		button0.setEnabled(false);
-		button1.setBackground(new Color(135, 206, 250));
-		button1.setEnabled(false);
-		button2.setBackground(new Color(135, 206, 250));
-		button2.setEnabled(false);
-		button3.setBackground(new Color(135, 206, 250));
-		button3.setEnabled(false);
-		button4.setBackground(new Color(135, 206, 250));
-		button4.setEnabled(false);
-		button5.setBackground(new Color(135, 206, 250));
-		button5.setEnabled(false);
+		//jan2018Button0.setBackground(new Color(135, 206, 250));
+		//jan2018Button0.setEnabled(false);
+		//jan2018Button1.setBackground(new Color(135, 206, 250));
+		//jan2018Button1.setEnabled(false);
+		//jan2018Button2.setBackground(new Color(135, 206, 250));
+		//jan2018Button2.setEnabled(false);
+		//jan2018Button3.setBackground(new Color(135, 206, 250));
+		//jan2018Button3.setEnabled(false);
+		//jan2018Button4.setBackground(new Color(135, 206, 250));
+		//jan2018Button4.setEnabled(false);
+		//jan2018Button5.setBackground(new Color(135, 206, 250));
+		//jan2018Button5.setEnabled(false);
 		
-		jan2018.add(button0);
+		//jan2018.add(jan2018Button0);
+		//jan2018.add(jan2018Button1);
+		//jan2018.add(jan2018Button2);
+		//jan2018.add(jan2018Button3);
+		//jan2018.add(jan2018Button4);
+		//jan2018.add(jan2018Button5);
 		
-		ArrayList<JButton> janBtnList = new ArrayList<JButton>();
+		ArrayList<JButton> jan2018BtnList = new ArrayList<JButton>();
 		
 		for(int i=0; i<31; i++) {
 			String z ="<html>" + Integer.toString(i+1) + "<br>" /*+ yearList.get(0).getMonthList().get(0).getDayList().get(i).getEventList().get(0).substring(0,10)*/
 					+ "<br>" /*+ yearList.get(0).getMonthList().get(0).getDayList().get(i).getEventList().get(1).substring(0,10)*/
 					+ "<br></html>" /*+ yearList.get(0).getMonthList().get(0).getDayList().get(i).getEventList().get(2).substring(0,10)*/;
-			janBtnList.add(new JButton(z));
-			janBtnList.get(i).setVerticalAlignment(SwingConstants.TOP);
-			janBtnList.get(i).setHorizontalAlignment(SwingConstants.LEFT);
-			janBtnList.get(i).setBackground(new Color(70, 130, 180));
+			jan2018BtnList.add(new JButton(z));
+			jan2018BtnList.get(i).setVerticalAlignment(SwingConstants.TOP);
+			jan2018BtnList.get(i).setHorizontalAlignment(SwingConstants.LEFT);
+			jan2018BtnList.get(i).setBackground(new Color(70, 130, 180));
 			
-			jan2018.add(janBtnList.get(i));
+			jan2018.add(jan2018BtnList.get(i));
 		}
+		
+	//
+
 		
 		JPanel feb2018 = new JPanel();
 		feb2018.setBackground(new Color(135, 206, 250));
 		year2018.addTab("February", null, feb2018, null);
 		
+	//
 		feb2018.setLayout(new GridLayout(0, 7, 0, 0));
-		//JLabel lblSunday = new JLabel("Sunday");
-		lblSunday.setHorizontalAlignment(SwingConstants.CENTER);
-		feb2018.add(lblSunday);
 		
-		//JLabel lblMonday = new JLabel("Monday");
-		lblMonday.setHorizontalAlignment(SwingConstants.CENTER);
-		feb2018.add(lblMonday);
+		JLabel feb2018LblSunday = new JLabel("Sunday");
+		feb2018LblSunday.setHorizontalAlignment(SwingConstants.CENTER);
+		feb2018.add(feb2018LblSunday);
 		
-		//JLabel lblTuesday = new JLabel("Tuesday");
-		lblTuesday.setHorizontalAlignment(SwingConstants.CENTER);
-		feb2018.add(lblTuesday);
+		JLabel feb2018LblMonday = new JLabel("Monday");
+		feb2018LblMonday.setHorizontalAlignment(SwingConstants.CENTER);
+		feb2018.add(feb2018LblMonday);
 		
-		//JLabel lblWednesday = new JLabel("Wednesday");
-		lblWednesday.setHorizontalAlignment(SwingConstants.CENTER);
-		feb2018.add(lblWednesday);
+		JLabel feb2018LblTuesday = new JLabel("Tuesday");
+		feb2018LblTuesday.setHorizontalAlignment(SwingConstants.CENTER);
+		feb2018.add(feb2018LblTuesday);
 		
-		//JLabel lblThursday = new JLabel("Thursday");
-		lblThursday.setHorizontalAlignment(SwingConstants.CENTER);
-		feb2018.add(lblThursday);
+		JLabel feb2018LblWednesday = new JLabel("Wednesday");
+		feb2018LblWednesday.setHorizontalAlignment(SwingConstants.CENTER);
+		feb2018.add(feb2018LblWednesday);
 		
-		//JLabel lblFriday = new JLabel("Friday");
-		lblFriday.setHorizontalAlignment(SwingConstants.CENTER);
-		feb2018.add(lblFriday);
+		JLabel feb2018LblThursday = new JLabel("Thursday");
+		feb2018LblThursday.setHorizontalAlignment(SwingConstants.CENTER);
+		feb2018.add(feb2018LblThursday);
 		
-		//JLabel lblSaturday = new JLabel("Saturday");
-		lblSaturday.setHorizontalAlignment(SwingConstants.CENTER);
-		feb2018.add(lblSaturday);
+		JLabel feb2018LblFriday = new JLabel("Friday");
+		feb2018LblFriday.setHorizontalAlignment(SwingConstants.CENTER);
+		feb2018.add(feb2018LblFriday);
 		
-		//JButton button = new JButton("");
-		feb2018.add(button0);
-		feb2018.add(button1);
-		feb2018.add(button2);
-		feb2018.add(button3);
+		JLabel feb2018LblSaturday = new JLabel("Saturday");
+		feb2018LblSaturday.setHorizontalAlignment(SwingConstants.CENTER);
+		feb2018.add(feb2018LblSaturday);
 		
-		ArrayList<JButton> febBtnList = new ArrayList<JButton>();
+		//JButton feb2018Button0 = new JButton("");
+		//JButton feb2018Button1 = new JButton("");
+		//JButton feb2018Button2 = new JButton("");
+		//JButton feb2018Button3 = new JButton("");
+		//JButton feb2018Button4 = new JButton("");
+		//JButton feb2018Button5 = new JButton("");
 		
-		for(int i=0; i<28; i++) {
+		//feb2018Button0.setBackground(new Color(135, 206, 250));
+		//feb2018Button0.setEnabled(false);
+		//feb2018Button1.setBackground(new Color(135, 206, 250));
+		//feb2018Button1.setEnabled(false);
+		//feb2018Button2.setBackground(new Color(135, 206, 250));
+		//feb2018Button2.setEnabled(false);
+		//feb2018Button3.setBackground(new Color(135, 206, 250));
+		//feb2018Button3.setEnabled(false);
+		//feb2018Button4.setBackground(new Color(135, 206, 250));
+		//feb2018Button4.setEnabled(false);
+		//feb2018Button5.setBackground(new Color(135, 206, 250));
+		//feb2018Button5.setEnabled(false);
+		
+		//feb2018.add(feb2018Button0);
+		//feb2018.add(feb2018Button1);
+		//feb2018.add(feb2018Button2);
+		//feb2018.add(feb2018Button3);
+		//feb2018.add(feb2018Button4);
+		//feb2018.add(feb2018Button5);
+		
+		ArrayList<JButton> feb2018BtnList = new ArrayList<JButton>();
+		
+		for(int i=0; i<31; i++) {
 			String z ="<html>" + Integer.toString(i+1) + "<br>" /*+ yearList.get(0).getMonthList().get(0).getDayList().get(i).getEventList().get(0).substring(0,10)*/
 					+ "<br>" /*+ yearList.get(0).getMonthList().get(0).getDayList().get(i).getEventList().get(1).substring(0,10)*/
 					+ "<br></html>" /*+ yearList.get(0).getMonthList().get(0).getDayList().get(i).getEventList().get(2).substring(0,10)*/;
-			febBtnList.add(new JButton(z));
-			febBtnList.get(i).setVerticalAlignment(SwingConstants.TOP);
-			febBtnList.get(i).setHorizontalAlignment(SwingConstants.LEFT);
-			febBtnList.get(i).setBackground(new Color(70, 130, 180));
+			feb2018BtnList.add(new JButton(z));
+			feb2018BtnList.get(i).setVerticalAlignment(SwingConstants.TOP);
+			feb2018BtnList.get(i).setHorizontalAlignment(SwingConstants.LEFT);
+			feb2018BtnList.get(i).setBackground(new Color(70, 130, 180));
 			
-			feb2018.add(febBtnList.get(i));
+			feb2018.add(feb2018BtnList.get(i));
 		}
+		
+	//
+
 		
 		JPanel mar2018 = new JPanel();
 		mar2018.setBackground(new Color(135, 206, 250));
