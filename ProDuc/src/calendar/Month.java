@@ -10,7 +10,6 @@ public class Month {
 	
 	public Month(int n) {
 		dayList = new ArrayList<Day>();
-		labelList = new ArrayList<JLabel>();
 		
 		
 		for(int i=0; i < n; i++) {

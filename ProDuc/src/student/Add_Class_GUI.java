@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.Font;
@@ -264,8 +266,21 @@ public class Add_Class_GUI {
 		frmProducAddClass.setBackground(new Color(135, 206, 250));
 		frmProducAddClass.setTitle("ProDuc - Add Course");
 		frmProducAddClass.setResizable(false);
-		frmProducAddClass.setBounds(100, 100, 300, 525);
-		frmProducAddClass.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmProducAddClass.setBounds(100, 100, 300, 524);
+		frmProducAddClass.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frmProducAddClass.addFocusListener(new FocusListener() {
+			private boolean gained = false;
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				gained = true;
+			}
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				if (gained) {
+					frmProducAddClass.dispose();
+				}
+			}
+		});
 		
 		btnDone.addActionListener(new ActionListener() {
 
