@@ -36,24 +36,29 @@ public class Calendar_GUI {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Calendar_GUI window = new Calendar_GUI(new PersonalCalendar());
-					window.frmProduc.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Calendar_GUI window = new Calendar_GUI(new PersonalCalendar());
+//					window.frmProduc.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
 	public Calendar_GUI(PersonalCalendar calendar) {
 		initialize(calendar);
+		try {
+			this.frmProduc.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -134,23 +139,23 @@ public class Calendar_GUI {
 		studentPanel.setLayout(null);
 		ArrayList<JPanel> studentYears = new ArrayList<JPanel>();
 		ArrayList<JTabbedPane> semesterTabbedPane = new ArrayList<JTabbedPane>();
-		
+
 		{
 			JTabbedPane studentTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 			studentTabbedPane.setBounds(10, 44, 333, 671);
 			studentPanel.add(studentTabbedPane);
-			
+
 			JButton btnAddSemester = new JButton("Add Semester");
-			
+
 			btnAddSemester.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					new Add_Semester_GUI();
 				}
-				
+
 			});
-			
+
 			btnAddSemester.setBackground(new Color(135, 206, 250));
 			btnAddSemester.setBounds(223, 11, 120, 22);
 			studentPanel.add(btnAddSemester);
@@ -161,7 +166,7 @@ public class Calendar_GUI {
 				studentYears.get(i).setBackground(new Color(135, 206, 250));
 				studentYears.get(i).setBorder(null);
 				studentYears.get(i).setLayout(null);
-				
+
 				studentTabbedPane.addTab(new Integer(calendar.getYearList().get(i).getYearNum()).toString(), null,
 						studentYears.get(i), null);
 				studentTabbedPane.setBackgroundAt(i, new Color(135, 206, 250));
@@ -175,9 +180,9 @@ public class Calendar_GUI {
 				studentYears.get(i).add(semesterTabbedPane.get(i));
 
 				ArrayList<JPanel> semesterPanel = new ArrayList<JPanel>();
-				
+
 				for (int j = 0; j < calendar.getYearList().get(i).getSemesterList().size(); j++) {
-					
+
 					semesterPanel.add(new JPanel());
 					semesterPanel.get(j).setBackground(new Color(70, 130, 180));
 					semesterPanel.get(j).setBorder(null);

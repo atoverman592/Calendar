@@ -33,18 +33,18 @@ public class Add_Semester_GUI {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Add_Semester_GUI window = new Add_Semester_GUI();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Add_Semester_GUI window = new Add_Semester_GUI();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
@@ -98,6 +98,7 @@ public class Add_Semester_GUI {
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(Add_Semester_GUI.class.getResource(smallLogo)));
+		
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setBounds(0, 0, 70, 70);
 		panel_1.add(label);
