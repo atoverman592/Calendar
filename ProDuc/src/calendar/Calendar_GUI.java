@@ -95,7 +95,7 @@ public class Calendar_GUI {
 		panel_1.add(label_2);
 
 		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(Add_Class_GUI.class.getResource(smallLogo)));
+		label_1.setIcon(new ImageIcon(smallLogo));
 		label_1.setBounds(0, 0, 70, 70);
 		panel_1.add(label_1);
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -404,7 +404,7 @@ public class Calendar_GUI {
 		frmProduc.setForeground(new Color(135, 206, 250));
 		frmProduc.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		frmProduc.setTitle("ProDuc");
-		frmProduc.setIconImage(Toolkit.getDefaultToolkit().getImage(Calendar_GUI.class.getResource(largeLogo)));
+		frmProduc.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
 		frmProduc.setBackground(new Color(255, 215, 0));
 		frmProduc.setBounds(0, 0, 1500, 900);
 		frmProduc.setLocationRelativeTo(null);
