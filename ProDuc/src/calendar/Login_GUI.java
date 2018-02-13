@@ -18,8 +18,7 @@ import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class Login_GUI {
     private JFrame frame;
@@ -124,7 +123,10 @@ public class Login_GUI {
                         frame.dispose();
                     }
                     else{
-
+                        JOptionPane.showMessageDialog(frame,
+                            "Invalid username and/or password.",
+                            "Login Error",
+                            JOptionPane.WARNING_MESSAGE);
                     }
                 }
 
@@ -166,15 +168,16 @@ public class Login_GUI {
         }
     }
     public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Login_GUI window = new Login_GUI(users);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Login_GUI window = new Login_GUI(users);
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }

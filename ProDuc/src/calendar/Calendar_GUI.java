@@ -25,13 +25,14 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import professional.Add_Meeting_GUI;
 
 public class Calendar_GUI {
 
 	private JFrame frmProduc;
 
-	private String smallLogo = "/icons/ProDuc Logo v1 70x70.png";
-	private String largeLogo = "/icons/ProDuc Logo v1.png";
+	private String smallLogo = "bin/icons/ProDuc Logo v1 70x70.png";
+	private String largeLogo = "bin/icons/ProDuc Logo v1.png";
 
 	/**
 	 * Launch the application.
@@ -128,9 +129,42 @@ public class Calendar_GUI {
 		professionalPanel.setBackground(new Color(255, 215, 0));
 		moduleTabbedPane.addTab("Professional", null, professionalPanel, null);
 		professionalPanel.setLayout(null);
-		moduleTabbedPane.setBackgroundAt(1, new Color(255, 215, 0));
+                ArrayList<JPanel> professionalYears = new ArrayList<JPanel>(); 
+		
 		{
+                    JTabbedPane professionalTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+                    professionalTabbedPane.setBounds(10, 44, 333, 671);
+                    professionalPanel.add(professionalTabbedPane);
+                    
+                    JButton btnAddMeeting = new JButton("Add Meeting");
+                    btnAddMeeting.addActionListener(new ActionListener(){
+                        @Override
+                        public void actionPerformed(ActionEvent ae) {
+                            JFrame addMeetingFrame = new JFrame();
+                            addMeetingFrame.setTitle("ProDuc");
+                            addMeetingFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
+                            addMeetingFrame.add(new Add_Meeting_GUI(addMeetingFrame));
+                            addMeetingFrame.pack();
+                            addMeetingFrame.setVisible(true);
+                        }
+                    });
+                    
+                    btnAddMeeting.setBackground(new Color(135, 206, 250));
+                    btnAddMeeting.setBounds(223, 11, 120, 22);
+                    professionalPanel.add(btnAddMeeting);
+                    moduleTabbedPane.setBackgroundAt(1, new Color(255, 215, 0));
+                    
+                    for(int i = 0; i < calendar.getNumberOfYears(); i++){
+                        professionalYears.add(new JPanel());
+                        professionalYears.get(i).setBackground(new Color(135, 206, 250));
+                        professionalYears.get(i).setBorder(null);
+                        professionalYears.get(i).setLayout(null);
+                        
+                        professionalTabbedPane.addTab(new Integer(calendar.getYearList().get(i).getYearNum()).toString(), null, professionalYears.get(i), null);
+                        professionalTabbedPane.setBackgroundAt(i, new Color(135, 206, 250));
+                        //professionalTabbedPane.setBackgroundAt(i, new Color(135, 206, 250));
 
+                    }
 		}
 
 		JPanel studentPanel = new JPanel();
