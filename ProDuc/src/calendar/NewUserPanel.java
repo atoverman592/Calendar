@@ -211,7 +211,7 @@ public class NewUserPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1MouseReleased
     
     private boolean createAccount(){
-        File folder = new File("bin/userAccounts");
+        File folder = new File("src/userAccounts");
         
         if(!folder.exists()){
             folder.mkdir();
@@ -258,11 +258,10 @@ public class NewUserPanel extends javax.swing.JPanel {
     }
     
     private boolean userExists(String userName){
-        File folder = new File("bin/userAccounts");
+        File folder = new File("src/userAccounts");
         if(folder.exists()){
             File[] files = folder.listFiles();
             for(File file : files){
-                System.out.println(file.getName());
                 if(file.getName().equals(userName+".ua")){
                     return true;
                 }
