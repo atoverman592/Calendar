@@ -31,28 +31,9 @@ public class Calendar_GUI {
 
 	private JFrame frmProduc;
 
-	private String smallLogo = "bin/icons/ProDuc Logo v1 70x70.png";
-	private String largeLogo = "bin/icons/ProDuc Logo v1.png";
+	private String smallLogo = "icons/ProDuc Logo v1 70x70.png";
+	private String largeLogo = "icons/ProDuc Logo v1.png";
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Calendar_GUI window = new Calendar_GUI(new PersonalCalendar());
-//					window.frmProduc.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the application.
-	 */
 	public Calendar_GUI(PersonalCalendar calendar) {
 		initialize(calendar);
 		try {
@@ -62,26 +43,12 @@ public class Calendar_GUI {
 		}
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	/**
-	 * 
-	 */
 	private void initialize(PersonalCalendar calendar) {
 		frmProduc = new JFrame();
 		frmProduc.getContentPane().setBackground(new Color(135, 206, 250));
 		frmProduc.getContentPane().setLayout(null);
 
 		UIManager.put("TabbedPane.selected", new Color(191, 161, 0));
-
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setForeground(new Color(0, 0, 0));
-		tabbedPane.setFont(new Font("Tahoma", Font.BOLD, 12));
-		tabbedPane.setBorder(null);
-		tabbedPane.setBackground(new Color(255, 215, 0));
-		tabbedPane.setBounds(10, 10, 1105, 850);
-		frmProduc.getContentPane().add(tabbedPane);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
@@ -91,6 +58,7 @@ public class Calendar_GUI {
 		frmProduc.getContentPane().add(panel_1);
 
 		JLabel label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(Calendar_GUI.class.getResource("/calendar/ProDuc Logo v1 70x70.png")));
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setBounds(0, 0, 70, 70);
 		panel_1.add(label_2);
@@ -114,124 +82,47 @@ public class Calendar_GUI {
 		lblProduc.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblProduc.setBounds(0, 0, 358, 50);
 		panel_2.add(lblProduc);
-
-		JTabbedPane moduleTabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		moduleTabbedPane.setBounds(1125, 106, 358, 754);
-		frmProduc.getContentPane().add(moduleTabbedPane);
-
-		JPanel personalPanel = new JPanel();
-		personalPanel.setBackground(new Color(255, 215, 0));
-		moduleTabbedPane.addTab("Personal", null, personalPanel, null);
-		personalPanel.setLayout(null);
-		moduleTabbedPane.setBackgroundAt(0, new Color(255, 215, 0));
-
-		JPanel professionalPanel = new JPanel();
-		professionalPanel.setBackground(new Color(255, 215, 0));
-		moduleTabbedPane.addTab("Professional", null, professionalPanel, null);
-		professionalPanel.setLayout(null);
-                ArrayList<JPanel> professionalYears = new ArrayList<JPanel>(); 
 		
-		{
-                    JTabbedPane professionalTabbedPane = new JTabbedPane(JTabbedPane.TOP);
-                    professionalTabbedPane.setBounds(10, 44, 333, 671);
-                    professionalPanel.add(professionalTabbedPane);
-                    
-                    JButton btnAddMeeting = new JButton("Add Meeting");
-                    btnAddMeeting.addActionListener(new ActionListener(){
-                        @Override
-                        public void actionPerformed(ActionEvent ae) {
-                            JFrame addMeetingFrame = new JFrame();
-                            addMeetingFrame.setTitle("ProDuc");
-                            addMeetingFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
-                            addMeetingFrame.add(new Add_Meeting_GUI(addMeetingFrame));
-                            addMeetingFrame.pack();
-                            addMeetingFrame.setVisible(true);
-                        }
-                    });
-                    
-                    btnAddMeeting.setBackground(new Color(135, 206, 250));
-                    btnAddMeeting.setBounds(223, 11, 120, 22);
-                    professionalPanel.add(btnAddMeeting);
-                    moduleTabbedPane.setBackgroundAt(1, new Color(255, 215, 0));
-                    
-                    for(int i = 0; i < calendar.getNumberOfYears(); i++){
-                        professionalYears.add(new JPanel());
-                        professionalYears.get(i).setBackground(new Color(135, 206, 250));
-                        professionalYears.get(i).setBorder(null);
-                        professionalYears.get(i).setLayout(null);
-                        
-                        professionalTabbedPane.addTab(new Integer(calendar.getYearList().get(i).getYearNum()).toString(), null, professionalYears.get(i), null);
-                        professionalTabbedPane.setBackgroundAt(i, new Color(135, 206, 250));
-                        //professionalTabbedPane.setBackgroundAt(i, new Color(135, 206, 250));
-
-                    }
-		}
-
-		JPanel studentPanel = new JPanel();
-		studentPanel.setBackground(new Color(255, 215, 0));
-		moduleTabbedPane.addTab("Student", null, studentPanel, null);
-		studentPanel.setLayout(null);
-		ArrayList<JPanel> studentYears = new ArrayList<JPanel>();
-		ArrayList<JTabbedPane> semesterTabbedPane = new ArrayList<JTabbedPane>();
+		frmProduc.getContentPane().add(addCalendarView(calendar));
 
 		{
-			JTabbedPane studentTabbedPane = new JTabbedPane(JTabbedPane.TOP);
-			studentTabbedPane.setBounds(10, 44, 333, 671);
-			studentPanel.add(studentTabbedPane);
+			JTabbedPane moduleTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+			moduleTabbedPane.setBounds(1125, 106, 358, 754);
+			frmProduc.getContentPane().add(moduleTabbedPane);
 
-			JButton btnAddSemester = new JButton("Add Semester");
+			moduleTabbedPane.addTab("Personal", null, addPersonalPanel(calendar), null);
+			moduleTabbedPane.setBackgroundAt(0, new Color(255, 215, 0));
 
-			btnAddSemester.addActionListener(new ActionListener() {
+			moduleTabbedPane.addTab("Professional", null, addProfessionalPanel(calendar), null);
+			moduleTabbedPane.setBackgroundAt(1, new Color(255, 215, 0));
 
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					new Add_Semester_GUI();
-				}
-
-			});
-
-			btnAddSemester.setBackground(new Color(135, 206, 250));
-			btnAddSemester.setBounds(223, 11, 120, 22);
-			studentPanel.add(btnAddSemester);
+			moduleTabbedPane.addTab("Student", null, addStudentPanel(calendar), null);
 			moduleTabbedPane.setBackgroundAt(2, new Color(255, 215, 0));
-
-			for (int i = 0; i < calendar.getNumberOfYears(); i++) {
-				studentYears.add(new JPanel());
-				studentYears.get(i).setBackground(new Color(135, 206, 250));
-				studentYears.get(i).setBorder(null);
-				studentYears.get(i).setLayout(null);
-
-				studentTabbedPane.addTab(new Integer(calendar.getYearList().get(i).getYearNum()).toString(), null,
-						studentYears.get(i), null);
-				studentTabbedPane.setBackgroundAt(i, new Color(135, 206, 250));
-				semesterTabbedPane.add(new JTabbedPane(JTabbedPane.TOP));
-				semesterTabbedPane.get(i).setBorder(null);
-				semesterTabbedPane.get(i).setFont(new Font("Tahoma", Font.BOLD, 12));
-				semesterTabbedPane.get(i).setForeground(Color.WHITE);
-				semesterTabbedPane.get(i).setBackground(new Color(70, 130, 180));
-				semesterTabbedPane.get(i).setBounds(5, 10, 1098, 850);
-
-				studentYears.get(i).add(semesterTabbedPane.get(i));
-
-				ArrayList<JPanel> semesterPanel = new ArrayList<JPanel>();
-
-				for (int j = 0; j < calendar.getYearList().get(i).getSemesterList().size(); j++) {
-
-					semesterPanel.add(new JPanel());
-					semesterPanel.get(j).setBackground(new Color(70, 130, 180));
-					semesterPanel.get(j).setBorder(null);
-					semesterPanel.get(j).setLayout(null);
-					semesterTabbedPane.get(i).addTab(calendar.getYearList().get(i).getSemesterList().get(j).getTitle(),
-							null, semesterPanel.get(j), null);
-				}
-
-			}
 		}
+
+		frmProduc.setResizable(false);
+		frmProduc.setForeground(new Color(135, 206, 250));
+		frmProduc.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		frmProduc.setTitle("ProDuc");
+		frmProduc.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
+		frmProduc.setBackground(new Color(255, 215, 0));
+		frmProduc.setBounds(0, 0, 1500, 900);
+		frmProduc.setLocationRelativeTo(null);
+		frmProduc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	public JTabbedPane addCalendarView(PersonalCalendar calendar) {
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setForeground(new Color(0, 0, 0));
+		tabbedPane.setFont(new Font("Tahoma", Font.BOLD, 12));
+		tabbedPane.setBorder(null);
+		tabbedPane.setBackground(new Color(255, 215, 0));
+		tabbedPane.setBounds(10, 10, 1105, 850);
+
 		ArrayList<JPanel> years = new ArrayList<JPanel>();
 		ArrayList<JTabbedPane> monthsTab = new ArrayList<JTabbedPane>();
 		ArrayList<JPanel> months = new ArrayList<JPanel>();
 		ArrayList<JLabel> dayLabels = new ArrayList<JLabel>();
-		// ArrayList<JButton> dayButtons = new ArrayList<JButton>();
 
 		for (int i = 0; i < calendar.getNumberOfYears(); i++) {
 			years.add(new JPanel());
@@ -433,15 +324,121 @@ public class Calendar_GUI {
 
 			}
 		}
+		return tabbedPane;
+	}
 
-		frmProduc.setResizable(false);
-		frmProduc.setForeground(new Color(135, 206, 250));
-		frmProduc.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		frmProduc.setTitle("ProDuc");
-		frmProduc.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
-		frmProduc.setBackground(new Color(255, 215, 0));
-		frmProduc.setBounds(0, 0, 1500, 900);
-		frmProduc.setLocationRelativeTo(null);
-		frmProduc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public JPanel addStudentPanel(PersonalCalendar calendar) {
+
+		JPanel studentPanel = new JPanel();
+		studentPanel.setBackground(new Color(255, 215, 0));
+		studentPanel.setLayout(null);
+		ArrayList<JPanel> studentYears = new ArrayList<JPanel>();
+		ArrayList<JTabbedPane> semesterTabbedPane = new ArrayList<JTabbedPane>();
+
+		{
+			JTabbedPane studentTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+			studentTabbedPane.setBounds(10, 44, 333, 671);
+			studentPanel.add(studentTabbedPane);
+
+			JButton btnAddSemester = new JButton("Add Semester");
+
+			btnAddSemester.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					new Add_Semester_GUI();
+				}
+
+			});
+
+			btnAddSemester.setBackground(new Color(135, 206, 250));
+			btnAddSemester.setBounds(223, 11, 120, 22);
+			studentPanel.add(btnAddSemester);
+
+			for (int i = 0; i < calendar.getNumberOfYears(); i++) {
+				studentYears.add(new JPanel());
+				studentYears.get(i).setBackground(new Color(135, 206, 250));
+				studentYears.get(i).setBorder(null);
+				studentYears.get(i).setLayout(null);
+
+				studentTabbedPane.addTab(new Integer(calendar.getYearList().get(i).getYearNum()).toString(), null,
+						studentYears.get(i), null);
+				studentTabbedPane.setBackgroundAt(i, new Color(135, 206, 250));
+				semesterTabbedPane.add(new JTabbedPane(JTabbedPane.TOP));
+				semesterTabbedPane.get(i).setBorder(null);
+				semesterTabbedPane.get(i).setFont(new Font("Tahoma", Font.BOLD, 12));
+				semesterTabbedPane.get(i).setForeground(Color.WHITE);
+				semesterTabbedPane.get(i).setBackground(new Color(70, 130, 180));
+				semesterTabbedPane.get(i).setBounds(5, 10, 1098, 850);
+
+				studentYears.get(i).add(semesterTabbedPane.get(i));
+
+				ArrayList<JPanel> semesterPanel = new ArrayList<JPanel>();
+
+				for (int j = 0; j < calendar.getYearList().get(i).getSemesterList().size(); j++) {
+
+					semesterPanel.add(new JPanel());
+					semesterPanel.get(j).setBackground(new Color(70, 130, 180));
+					semesterPanel.get(j).setBorder(null);
+					semesterPanel.get(j).setLayout(null);
+					semesterTabbedPane.get(i).addTab(calendar.getYearList().get(i).getSemesterList().get(j).getTitle(),
+							null, semesterPanel.get(j), null);
+				}
+
+			}
+		}
+		return studentPanel;
+	}
+
+	public JPanel addProfessionalPanel(PersonalCalendar calendar) {
+		JPanel professionalPanel = new JPanel();
+		professionalPanel.setBackground(new Color(255, 215, 0));
+		professionalPanel.setLayout(null);
+		ArrayList<JPanel> professionalYears = new ArrayList<JPanel>();
+
+		{
+			JTabbedPane professionalTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+			professionalTabbedPane.setBounds(10, 44, 333, 671);
+			professionalPanel.add(professionalTabbedPane);
+
+			JButton btnAddMeeting = new JButton("Add Meeting");
+			btnAddMeeting.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent ae) {
+					JFrame addMeetingFrame = new JFrame();
+					addMeetingFrame.setTitle("ProDuc");
+					addMeetingFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
+					addMeetingFrame.getContentPane().add(new Add_Meeting_GUI(addMeetingFrame));
+					addMeetingFrame.pack();
+					addMeetingFrame.setVisible(true);
+				}
+			});
+
+			btnAddMeeting.setBackground(new Color(135, 206, 250));
+			btnAddMeeting.setBounds(223, 11, 120, 22);
+			professionalPanel.add(btnAddMeeting);
+
+			for (int i = 0; i < calendar.getNumberOfYears(); i++) {
+				professionalYears.add(new JPanel());
+				professionalYears.get(i).setBackground(new Color(135, 206, 250));
+				professionalYears.get(i).setBorder(null);
+				professionalYears.get(i).setLayout(null);
+
+				professionalTabbedPane.addTab(new Integer(calendar.getYearList().get(i).getYearNum()).toString(), null,
+						professionalYears.get(i), null);
+				professionalTabbedPane.setBackgroundAt(i, new Color(135, 206, 250));
+				// professionalTabbedPane.setBackgroundAt(i, new Color(135, 206, 250));
+
+			}
+		}
+		return professionalPanel;
+	}
+
+	public JPanel addPersonalPanel(PersonalCalendar calendar) {
+		JPanel personalPanel = new JPanel();
+		personalPanel.setBackground(new Color(255, 215, 0));
+		personalPanel.setLayout(null);
+
+		return personalPanel;
 	}
 }

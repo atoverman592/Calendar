@@ -2,3 +2,5 @@
 .project
 .classpath
 .DS_Store
+/NetBeans/ProDuc/nbproject/private/
+/NetBeans/ProDuc/build/

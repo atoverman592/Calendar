@@ -17,7 +17,8 @@ public class NewUserPanel extends javax.swing.JPanel {
     public NewUserPanel(JFrame frame, String largeLogo) {
         this.frame = frame;
         frame.setTitle("ProDuc");
-        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(NewUserPanel.class.getResource("/calendar/ProDuc Logo v1.png")));
+        frame.setLocationRelativeTo(null);
         //this.showPasswordLabel.setIcon(new ImageIcon("bin/icons/showPassword.png"));
         initComponents();
     }

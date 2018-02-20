@@ -27,9 +27,6 @@ public class Add_Class_GUI {
 	private JFrame frmProducAddClass;
 	private JTextField txtLocation;
 	private JTextField txtTeacher;
-	
-	private String smallLogo = "/icons/ProDuc Logo v1 70x70.png";
-	private String largeLogo = "/icons/ProDuc Logo v1.png";
 
 	/**
 	 * Launch the application.
@@ -60,7 +57,7 @@ public class Add_Class_GUI {
 	private void initialize() {
 		frmProducAddClass = new JFrame();
 		frmProducAddClass.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		frmProducAddClass.setIconImage(Toolkit.getDefaultToolkit().getImage(Add_Class_GUI.class.getResource(largeLogo)));
+		frmProducAddClass.setIconImage(Toolkit.getDefaultToolkit().getImage(Add_Class_GUI.class.getResource("/calendar/ProDuc Logo v1.png")));
 		frmProducAddClass.setForeground(new Color(135, 206, 250));
 		frmProducAddClass.getContentPane().setBackground(new Color(135, 206, 250));
 		frmProducAddClass.getContentPane().setLayout(null);
@@ -74,7 +71,7 @@ public class Add_Class_GUI {
 		
 		JLabel label = new JLabel("");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setIcon(new ImageIcon(Add_Class_GUI.class.getResource(smallLogo)));
+		label.setIcon(new ImageIcon(Add_Class_GUI.class.getResource("/calendar/ProDuc Logo v1 70x70.png")));
 		label.setBounds(0, 0, 70, 70);
 		panel.add(label);
 		

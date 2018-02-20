@@ -63,7 +63,7 @@ public class Add_Semester_GUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Add_Semester_GUI.class.getResource("/calendar/ProDuc Logo v1.png")));
 		frame.setBounds(100, 100, 300, 365);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.addFocusListener(new FocusListener() {
@@ -97,7 +97,7 @@ public class Add_Semester_GUI {
 		panel.add(panel_1);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(smallLogo));
+		label.setIcon(new ImageIcon(Add_Semester_GUI.class.getResource("/calendar/ProDuc Logo v1 70x70.png")));
 		
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setBounds(0, 0, 70, 70);
