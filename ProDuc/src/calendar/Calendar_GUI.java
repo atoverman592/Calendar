@@ -104,7 +104,7 @@ public class Calendar_GUI {
 		frmProduc.setForeground(new Color(135, 206, 250));
 		frmProduc.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		frmProduc.setTitle("ProDuc");
-		frmProduc.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
+		frmProduc.setIconImage(Toolkit.getDefaultToolkit().getImage("/calendar/ProDuc Logo v1.png"));
 		frmProduc.setBackground(new Color(255, 215, 0));
 		frmProduc.setBounds(0, 0, 1500, 900);
 		frmProduc.setLocationRelativeTo(null);
@@ -249,7 +249,7 @@ public class Calendar_GUI {
 				}
 
 				Calendar cal = Calendar.getInstance();
-				cal.set(calendar.getYearList().get(i).getYearNum(), j, 1);
+				cal.set(calendar.getYearList().get(i).getYearNum(), j, 0);
 				// System.out.println(cal.get(Calendar.DAY_OF_WEEK));
 
 				for (int m = 0; m < numDays[j]; m++) {

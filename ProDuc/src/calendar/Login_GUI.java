@@ -148,6 +148,8 @@ public class Login_GUI {
 		} else {
 			JOptionPane.showMessageDialog(frame, "Invalid username and/or password.", "Login Error",
 					JOptionPane.WARNING_MESSAGE);
+			//new Calendar_GUI(new PersonalCalendar());
+			
 		}
 	}
 
