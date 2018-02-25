@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 import student.*;
+import personal.*;
 
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -31,8 +32,8 @@ public class Calendar_GUI {
 
 	private JFrame frmProduc;
 
-	private String smallLogo = "icons/ProDuc Logo v1 70x70.png";
-	private String largeLogo = "icons/ProDuc Logo v1.png";
+	private String smallLogo = "/calendar/ProDuc Logo v1 70x70.png";
+	private String largeLogo = "/calendar/ProDuc Logo v1.png";
 
 	public Calendar_GUI(PersonalCalendar calendar) {
 		initialize(calendar);
@@ -438,6 +439,73 @@ public class Calendar_GUI {
 		JPanel personalPanel = new JPanel();
 		personalPanel.setBackground(new Color(255, 215, 0));
 		personalPanel.setLayout(null);
+                
+                {
+			JTabbedPane personalTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+			personalTabbedPane.setBounds(10, 44, 333, 671);
+			personalPanel.add(personalTabbedPane);
+
+			personalTabbedPane.addTab("Notes", null, null, null);
+			personalTabbedPane.setBackgroundAt(0, new Color(255, 215, 0));
+
+			personalTabbedPane.addTab("Fitness", null, null, null);
+			personalTabbedPane.setBackgroundAt(1, new Color(255, 215, 0));
+
+			personalTabbedPane.addTab("Budget", null, null, null);
+			personalTabbedPane.setBackgroundAt(2, new Color(255, 215, 0));
+		}
+                
+                JButton btnAddNotes = new JButton("Add Notes");
+			btnAddNotes.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent ae) {
+					JFrame addNotes = new JFrame();
+					addNotes.setTitle("ProDuc");
+					addNotes.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
+					addNotes.getContentPane().add(new Add_Notes_GUI(addNotes));
+					addNotes.pack();
+					addNotes.setVisible(true);
+				}
+			});
+
+			btnAddNotes.setBackground(new Color(135, 206, 250));
+			btnAddNotes.setBounds(10, 11, 95, 22);
+			personalPanel.add(btnAddNotes);
+                        
+                JButton btnAddFitness = new JButton("Edit Fitness");
+			btnAddFitness.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent ae) {
+					JFrame addFitness = new JFrame();
+					addFitness.setTitle("ProDuc");
+					addFitness.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
+					addFitness.getContentPane().add(new Add_Fitness_GUI(addFitness));
+					addFitness.pack();
+					addFitness.setVisible(true);
+				}
+			});
+
+			btnAddFitness.setBackground(new Color(135, 206, 250));
+			btnAddFitness.setBounds(110, 11, 100, 22);
+			personalPanel.add(btnAddFitness);
+                        
+                JButton btnAddBudget = new JButton("Manage Budget");
+			btnAddBudget.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent ae) {
+					JFrame addBudget = new JFrame();
+					addBudget.setTitle("ProDuc");
+					addBudget.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
+					addBudget.getContentPane().add(new Add_Budget_GUI(addBudget));
+					addBudget.pack();
+					addBudget.setVisible(true);
+				}
+			});
+
+			btnAddBudget.setBackground(new Color(135, 206, 250));
+			btnAddBudget.setBounds(215, 11, 130, 22);
+			personalPanel.add(btnAddBudget);
+
 
 		return personalPanel;
 	}
