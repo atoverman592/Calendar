@@ -442,7 +442,7 @@ public class Calendar_GUI {
                 
                 {
 			JTabbedPane personalTabbedPane = new JTabbedPane(JTabbedPane.TOP);
-			personalTabbedPane.setBounds(10, 44, 333, 671);
+			personalTabbedPane.setBounds(10, 84, 333, 631);
 			personalPanel.add(personalTabbedPane);
 
 			personalTabbedPane.addTab("Notes", null, null, null);
@@ -469,7 +469,7 @@ public class Calendar_GUI {
 			});
 
 			btnAddNotes.setBackground(new Color(135, 206, 250));
-			btnAddNotes.setBounds(10, 11, 95, 22);
+			btnAddNotes.setBounds(10, 11, 150, 25);
 			personalPanel.add(btnAddNotes);
                         
                 JButton btnAddFitness = new JButton("Edit Fitness");
@@ -486,7 +486,7 @@ public class Calendar_GUI {
 			});
 
 			btnAddFitness.setBackground(new Color(135, 206, 250));
-			btnAddFitness.setBounds(110, 11, 100, 22);
+			btnAddFitness.setBounds(10, 51, 150, 25);
 			personalPanel.add(btnAddFitness);
                         
                 JButton btnAddBudget = new JButton("Manage Budget");
@@ -503,8 +503,26 @@ public class Calendar_GUI {
 			});
 
 			btnAddBudget.setBackground(new Color(135, 206, 250));
-			btnAddBudget.setBounds(215, 11, 130, 22);
+			btnAddBudget.setBounds(190, 11, 145, 25);
 			personalPanel.add(btnAddBudget);
+                        
+                JButton btnAddPersonalEvent = new JButton("Add Event");
+			btnAddPersonalEvent.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent ae) {
+					JFrame addPersonalEvent = new JFrame();
+					addPersonalEvent.setTitle("ProDuc");
+					addPersonalEvent.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
+					addPersonalEvent.getContentPane().add(new Add_Budget_GUI(addPersonalEvent));
+					addPersonalEvent.pack();
+					addPersonalEvent.setVisible(true);
+				}
+			});
+
+			btnAddPersonalEvent.setBackground(new Color(135, 206, 250));
+			btnAddPersonalEvent.setBounds(190, 51, 145, 25);
+			personalPanel.add(btnAddPersonalEvent);
+
 
 
 		return personalPanel;

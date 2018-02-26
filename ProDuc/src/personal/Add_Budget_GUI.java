@@ -37,7 +37,7 @@ public class Add_Budget_GUI extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 25)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Manage Budget");
+        jLabel1.setText("Manage Weekly Budget");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -46,7 +46,7 @@ public class Add_Budget_GUI extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(126, 126, 126))
+                .addGap(87, 87, 87))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -61,9 +61,6 @@ public class Add_Budget_GUI extends javax.swing.JPanel {
 
         jButton1.setBackground(new java.awt.Color(255, 215, 0));
         jButton1.setText("Cancel");
-        jButton1.setMaximumSize(new java.awt.Dimension(71, 25));
-        jButton1.setMinimumSize(new java.awt.Dimension(71, 25));
-        jButton1.setPreferredSize(new java.awt.Dimension(71, 25));
 
         jButton2.setBackground(new java.awt.Color(255, 215, 0));
         jButton2.setText("Save");
