@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 
 import student.*;
 import personal.*;
+import groups.*; 
 
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -48,6 +49,23 @@ public class Calendar_GUI {
 		frmProduc = new JFrame();
 		frmProduc.getContentPane().setBackground(new Color(135, 206, 250));
 		frmProduc.getContentPane().setLayout(null);
+                
+                JButton btnGroups = new JButton("Groups");
+                    btnGroups.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent ae) {
+                                    JFrame addGroups = new JFrame();
+                                    addGroups.setTitle("ProDuc");
+                                    addGroups.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
+                                    addGroups.getContentPane().add(new Groups_GUI(addGroups));
+                                    addGroups.pack();
+                                    addGroups.setVisible(true);
+                            }
+                    });
+
+                    btnGroups.setBackground(new Color(70, 130, 180));
+                    btnGroups.setBounds(1380, 91, 100, 30);
+                    frmProduc.getContentPane().add(btnGroups);
 
 		UIManager.put("TabbedPane.selected", new Color(191, 161, 0));
 
@@ -76,14 +94,14 @@ public class Calendar_GUI {
 		panel_2.setBackground(new Color(70, 130, 180));
 		panel_2.setBounds(0, 11, 358, 50);
 		panel_1.add(panel_2);
-
+                
 		JLabel lblProduc = new JLabel("ProDuc Planner");
 		lblProduc.setHorizontalAlignment(SwingConstants.CENTER);
 		lblProduc.setForeground(Color.WHITE);
 		lblProduc.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblProduc.setBounds(0, 0, 358, 50);
 		panel_2.add(lblProduc);
-		
+                    
 		frmProduc.getContentPane().add(addCalendarView(calendar));
 
 		{
@@ -522,8 +540,6 @@ public class Calendar_GUI {
 			btnAddPersonalEvent.setBackground(new Color(135, 206, 250));
 			btnAddPersonalEvent.setBounds(190, 51, 145, 25);
 			personalPanel.add(btnAddPersonalEvent);
-
-
 
 		return personalPanel;
 	}
