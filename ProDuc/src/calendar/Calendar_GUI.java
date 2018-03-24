@@ -49,23 +49,21 @@ public class Calendar_GUI {
 		frmProduc = new JFrame();
 		frmProduc.getContentPane().setBackground(new Color(135, 206, 250));
 		frmProduc.getContentPane().setLayout(null);
-                
-                JButton btnGroups = new JButton("Groups");
-                    btnGroups.addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent ae) {
-                                    JFrame addGroups = new JFrame();
-                                    addGroups.setTitle("ProDuc");
-                                    addGroups.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
-                                    addGroups.getContentPane().add(new Groups_GUI(addGroups));
-                                    addGroups.pack();
-                                    addGroups.setVisible(true);
-                            }
-                    });
+                     
+			JButton btnGroups = new JButton("Groups");
 
-                    btnGroups.setBackground(new Color(70, 130, 180));
-                    btnGroups.setBounds(1380, 91, 100, 30);
-                    frmProduc.getContentPane().add(btnGroups);
+			btnGroups.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					new Groups_GUI();
+				}
+
+			});
+
+			btnGroups.setBackground(new Color(70, 130, 180));
+			btnGroups.setBounds(1380, 91, 100, 30);
+			frmProduc.add(btnGroups);
 
 		UIManager.put("TabbedPane.selected", new Color(191, 161, 0));
 
