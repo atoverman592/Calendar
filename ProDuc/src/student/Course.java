@@ -1,6 +1,8 @@
 package student;
 
-public class Course {
+import java.io.Serializable;
+
+public class Course implements Serializable{
 	String title;
 	
 	public Course(String t) {

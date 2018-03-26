@@ -1,8 +1,9 @@
 package calendar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Day {
+public class Day implements Serializable{
 	ArrayList<Event> eventList;
 	int dayNum;
 	

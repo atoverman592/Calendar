@@ -1,10 +1,11 @@
 package student;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import calendar.Event;
 
-public class Assignment extends Event {
+public class Assignment extends Event implements Serializable{
 
 	public Assignment(String newTitle, Date newStartTime) {
 		super(newTitle, newStartTime);

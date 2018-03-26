@@ -1,10 +1,11 @@
 package calendar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import student.Semester;
 
-public class Year {
+public class Year implements Serializable{
 	ArrayList<Month> monthList;
 	ArrayList<Semester> semesterList;
 	int year;

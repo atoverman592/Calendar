@@ -3,8 +3,11 @@ package calendar;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.swing.BorderFactory;
@@ -216,6 +219,16 @@ public class NewUserPanel extends javax.swing.JPanel {
         if(!folder.exists()){
             folder.mkdir();
         }
+        
+        try {
+        	User user = new User(this.usernameTextField.getText(), new String(this.passwordTextField.getPassword()));
+			ObjectOutputStream oOS = new ObjectOutputStream(new FileOutputStream(folder+"\\" + this.usernameTextField.getText()+ ".bin"));
+			
+			oOS.writeObject(user);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
         File file = new File(folder+"\\"+this.usernameTextField.getText()+".ua");
         try {

@@ -1,8 +1,9 @@
 package calendar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PersonalCalendar {
+public class PersonalCalendar implements Serializable{
 
 	ArrayList<Year> yearList;
 

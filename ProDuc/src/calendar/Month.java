@@ -1,10 +1,11 @@
 package calendar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
 
-public class Month {
+public class Month implements Serializable{
 	ArrayList<Day> dayList;
 	ArrayList<JLabel> labelList;
 	

@@ -1,6 +1,8 @@
 package student;
 
-public class Semester {
+import java.io.Serializable;
+
+public class Semester implements Serializable{
 	String title;
 	
 	public Semester(String t) {

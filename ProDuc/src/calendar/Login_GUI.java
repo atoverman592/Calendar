@@ -16,11 +16,31 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
+
 public class Login_GUI {
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					Login_GUI window = new Login_GUI(users);
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	
 	private JFrame frame;
 	private static ArrayList<User> users = new ArrayList<User>();
 	private String smallLogo = "/calendar/ProDuc Logo v1 70x70.png";
@@ -142,8 +162,15 @@ public class Login_GUI {
 	private void login() {
 
 		if (verifyLoginInfo()) {
-			users.add(new User(textField.getText(), new String(passwordField.getPassword())));
-			new Calendar_GUI(users.get(0).getCalendar());
+			ObjectInputStream oIS;
+			try {
+				oIS = new ObjectInputStream(new FileInputStream(userAccountsLoction + "\\" + textField.getText() + ".bin"));
+				User user = (User) oIS.readObject();
+				new Calendar_GUI(user.getCalendar());
+			} catch (IOException | ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			frame.dispose();
 		} else {
 			JOptionPane.showMessageDialog(frame, "Invalid username and/or password.", "Login Error",
@@ -190,18 +217,6 @@ public class Login_GUI {
 		}
 	}
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					Login_GUI window = new Login_GUI(users);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 }

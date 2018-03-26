@@ -1,8 +1,9 @@
 package calendar;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Event {
+public class Event implements Serializable{
 	String title = null;
 	Date startTime = null;
 	Date endTime = null;
