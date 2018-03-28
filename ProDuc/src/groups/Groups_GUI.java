@@ -181,10 +181,14 @@ public class Groups_GUI {
 		btnCreateANewGroup.setBounds(68, 86, 286, 98);
 		panel_3.add(btnCreateANewGroup);
 		
-		JButton btnEnableSmartScheduling = new JButton("Enable Smart Scheduling");
+		JButton btnEnableSmartScheduling = new JButton("Smart Scheduling");
 		btnEnableSmartScheduling.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Smart_Scheduling_GUI();
+				JFrame frame = new JFrame();
+                                frame.setTitle("Smart Scheduling");
+                                frame.add(new Smart_Scheduling_Panel(frame));
+                                frame.pack();
+                                frame.setVisible(true);
 			}
 		});
 		btnEnableSmartScheduling.setFont(new Font("Tahoma", Font.PLAIN, 15));
