@@ -3,11 +3,8 @@ package calendar;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.swing.BorderFactory;
@@ -26,7 +23,7 @@ public class NewUserPanel extends javax.swing.JPanel {
         initComponents();
     }
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         emailPanel = new javax.swing.JPanel();
@@ -52,33 +49,67 @@ public class NewUserPanel extends javax.swing.JPanel {
         emailLabel.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         emailLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         emailLabel.setText("Email:");
-        emailPanel.add(emailLabel);
 
         emailTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         emailTextField.setPreferredSize(new java.awt.Dimension(200, 24));
-        emailPanel.add(emailTextField);
+
+        javax.swing.GroupLayout emailPanelLayout = new javax.swing.GroupLayout(emailPanel);
+        emailPanel.setLayout(emailPanelLayout);
+        emailPanelLayout.setHorizontalGroup(
+            emailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(emailPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(emailLabel)
+                .addGap(53, 53, 53)
+                .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        emailPanelLayout.setVerticalGroup(
+            emailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(emailPanelLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(emailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailLabel)))
+        );
 
         usernamePanel.setBackground(new java.awt.Color(135, 206, 250));
 
         userNameLabel.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         userNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         userNameLabel.setText("Username:");
-        usernamePanel.add(userNameLabel);
 
         usernameTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         usernameTextField.setPreferredSize(new java.awt.Dimension(200, 24));
-        usernamePanel.add(usernameTextField);
+
+        javax.swing.GroupLayout usernamePanelLayout = new javax.swing.GroupLayout(usernamePanel);
+        usernamePanel.setLayout(usernamePanelLayout);
+        usernamePanelLayout.setHorizontalGroup(
+            usernamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usernamePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(userNameLabel)
+                .addGap(18, 18, 18)
+                .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        usernamePanelLayout.setVerticalGroup(
+            usernamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usernamePanelLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(usernamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userNameLabel)))
+        );
 
         passwordPanel.setBackground(new java.awt.Color(135, 206, 250));
 
         passwordLabel.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         passwordLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         passwordLabel.setText("Password:");
-        passwordPanel.add(passwordLabel);
 
         passwordTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        passwordTextField.setPreferredSize(new java.awt.Dimension(200, 22));
-        passwordPanel.add(passwordTextField);
+        passwordTextField.setPreferredSize(new java.awt.Dimension(200, 24));
 
         jButton1.setBackground(new java.awt.Color(250, 215, 0));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
@@ -97,7 +128,30 @@ public class NewUserPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        passwordPanel.add(jButton1);
+
+        javax.swing.GroupLayout passwordPanelLayout = new javax.swing.GroupLayout(passwordPanel);
+        passwordPanel.setLayout(passwordPanelLayout);
+        passwordPanelLayout.setHorizontalGroup(
+            passwordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(passwordPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(passwordLabel)
+                .addGap(24, 24, 24)
+                .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1))
+        );
+        passwordPanelLayout.setVerticalGroup(
+            passwordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(passwordPanelLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(passwordLabel))
+            .addGroup(passwordPanelLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(passwordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         buttonPanel.setBackground(new java.awt.Color(135, 206, 250));
 
@@ -156,17 +210,15 @@ public class NewUserPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(passwordPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(usernamePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(emailPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                    .addComponent(usernamePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(emailPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,9 +235,9 @@ public class NewUserPanel extends javax.swing.JPanel {
                 .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void acceptButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acceptButtonMouseClicked
+    private void acceptButtonMouseClicked(java.awt.event.MouseEvent evt) {                                          
         if(verifyInput()){
             if(!userExists(this.usernameTextField.getText())){
                 createAccount();
@@ -195,23 +247,23 @@ public class NewUserPanel extends javax.swing.JPanel {
                 
             }
         }
-    }//GEN-LAST:event_acceptButtonMouseClicked
+    }                                         
 
-    private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked
+    private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {                                          
         frame.dispose();
-    }//GEN-LAST:event_cancelButtonMouseClicked
+    }                                         
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }                                        
 
-    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {                                      
         this.passwordTextField.setEchoChar((char)0);
-    }//GEN-LAST:event_jButton1MousePressed
+    }                                     
 
-    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {                                       
         this.passwordTextField.setEchoChar('\u2022');
-    }//GEN-LAST:event_jButton1MouseReleased
+    }                                      
     
     private boolean createAccount(){
         File folder = new File("src/userAccounts");
@@ -219,16 +271,6 @@ public class NewUserPanel extends javax.swing.JPanel {
         if(!folder.exists()){
             folder.mkdir();
         }
-        
-        try {
-        	User user = new User(this.usernameTextField.getText(), new String(this.passwordTextField.getPassword()));
-			ObjectOutputStream oOS = new ObjectOutputStream(new FileOutputStream(folder+"\\" + this.usernameTextField.getText()+ ".bin"));
-			
-			oOS.writeObject(user);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
         
         File file = new File(folder+"\\"+this.usernameTextField.getText()+".ua");
         try {
@@ -297,7 +339,7 @@ public class NewUserPanel extends javax.swing.JPanel {
         return result;
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton acceptButton;
     private javax.swing.JPanel buttonPanel;
     private javax.swing.JButton cancelButton;
@@ -313,5 +355,5 @@ public class NewUserPanel extends javax.swing.JPanel {
     private javax.swing.JLabel userNameLabel;
     private javax.swing.JPanel usernamePanel;
     private javax.swing.JTextField usernameTextField;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
