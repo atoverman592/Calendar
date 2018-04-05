@@ -271,6 +271,17 @@ public class NewUserPanel extends javax.swing.JPanel {
         if(!folder.exists()){
             folder.mkdir();
         }
+
+        try {
+        	User user = new User(this.usernameTextField.getText(), new String(this.passwordTextField.getPassword()));
+			ObjectOutputStream oOS = new ObjectOutputStream(new FileOutputStream(folder+"\\" + this.usernameTextField.getText()+ ".bin"));
+			
+			oOS.writeObject(user);
+			oOS.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
         File file = new File(folder+"\\"+this.usernameTextField.getText()+".ua");
         try {
