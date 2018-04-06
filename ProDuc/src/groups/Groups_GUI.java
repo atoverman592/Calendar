@@ -34,7 +34,7 @@ public class Groups_GUI {
 		addGroups = new JFrame();
 		addGroups.getContentPane().setBackground(new Color(135, 206, 250));
 		addGroups.setBounds(100, 100, 450, 300);
-		addGroups.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		addGroups.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		addGroups.setResizable(false);
 		addGroups.setForeground(new Color(135, 206, 250));
@@ -44,7 +44,6 @@ public class Groups_GUI {
 		addGroups.setBackground(new Color(255, 215, 0));
 		addGroups.setBounds(0, 0, 1500, 900);
 		addGroups.setLocationRelativeTo(null);
-		addGroups.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		addGroups.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("New label");
