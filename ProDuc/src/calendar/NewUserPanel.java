@@ -3,8 +3,13 @@ package calendar;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.swing.BorderFactory;
@@ -18,9 +23,8 @@ public class NewUserPanel extends javax.swing.JPanel {
         this.frame = frame;
         frame.setTitle("ProDuc");
         frame.setIconImage(Toolkit.getDefaultToolkit().getImage(NewUserPanel.class.getResource("/calendar/ProDuc Logo v1.png")));
-        frame.setLocationRelativeTo(null);
-        //this.showPasswordLabel.setIcon(new ImageIcon("bin/icons/showPassword.png"));
         initComponents();
+        //this.showPasswordLabel.setIcon(new ImageIcon("bin/icons/showPassword.png"));
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
@@ -285,11 +289,13 @@ public class NewUserPanel extends javax.swing.JPanel {
         
         File file = new File(folder+"\\"+this.usernameTextField.getText()+".ua");
         try {
+        	String hash = HashPassword(passwordTextField.getText());
+        	
             FileWriter writer = new FileWriter(file);
             writer.write(
                 "Email:"+this.emailTextField.getText()+"\n"+
                 "Username:"+this.usernameTextField.getText()+"\n"+
-                "Password:"+new String(this.passwordTextField.getPassword())
+                "Password:"+hash
             );
             writer.close();
             return true;
@@ -350,6 +356,33 @@ public class NewUserPanel extends javax.swing.JPanel {
         return result;
     }
 
+    
+    private String HashPassword(String password) {
+		String generatedPassword = null;
+        try {
+            // Create MessageDigest instance for MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            //Add password bytes to digest
+            md.update(password.getBytes());
+            //Get the hash's bytes
+            byte[] bytes = md.digest();
+            //This bytes[] has bytes in decimal format;
+            //Convert it to hexadecimal format
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            //Get complete hashed password in hex format
+            generatedPassword = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        return generatedPassword;
+	}
+    
     // Variables declaration - do not modify                     
     private javax.swing.JButton acceptButton;
     private javax.swing.JPanel buttonPanel;

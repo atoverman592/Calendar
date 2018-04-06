@@ -20,25 +20,27 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 
 public class Login_GUI {
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					Login_GUI window = new Login_GUI(users);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			@Override
+//			public void run() {
+//				try {
+//					Login_GUI window = new Login_GUI(users);
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	
 	private JFrame frame;
@@ -49,11 +51,11 @@ public class Login_GUI {
 	private JTextField textField;
 	private JPasswordField passwordField;
 
-	public Login_GUI(ArrayList<User> users) {
-		initialize(users);
+	public Login_GUI() {
+		initialize();
 	}
 
-	private void initialize(ArrayList<User> users) {
+	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("ProDuc");
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Login_GUI.class.getResource(largeLogo)));
@@ -139,6 +141,7 @@ public class Login_GUI {
 				JFrame newUserFrame = new JFrame();
 				newUserFrame.getContentPane().add(new NewUserPanel(newUserFrame, largeLogo));
 				newUserFrame.pack();
+				newUserFrame.setLocationRelativeTo(null);
 				newUserFrame.setVisible(true);
 			}
 
@@ -157,6 +160,7 @@ public class Login_GUI {
 
 		});
 		panel.add(btnLogin);
+		frame.setVisible(true);
 	}
 
 	private void login() {
@@ -166,7 +170,7 @@ public class Login_GUI {
 			try {
 				oIS = new ObjectInputStream(new FileInputStream(userAccountsLoction + "\\" + textField.getText() + ".bin"));
 				User user = (User) oIS.readObject();
-				new Calendar_GUI(user.getCalendar());
+				new Calendar_GUI(user);
 			} catch (IOException | ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -189,24 +193,32 @@ public class Login_GUI {
                     System.out.println("g");
 			return false;
 		} else {
+			
+			
 			File[] accounts = folder.listFiles();
 			for (File account : accounts) {
 				if (account.getName().equals(this.textField.getText() + ".ua")) {
 					File userAccount = new File(userAccountsLoction + "\\" + this.textField.getText() + ".ua");
 					try {
+						
+			        	String hashed = HashPassword(passwordField.getText());
+						
 						Scanner scanner = new Scanner(userAccount);
 						String nextLine = "";
 						while (scanner.hasNext()) {
 							nextLine = scanner.nextLine();
 							if (nextLine.contains("Password:")) {
-								if (nextLine.substring(9, nextLine.length())
-										.equals(new String(this.passwordField.getPassword()))) {
+								if (nextLine.substring(9, nextLine.length()).trim()
+										.equals(hashed)) {
+									scanner.close();
 									return true;
 								} else {
+									scanner.close();
 									return false;
 								}
 							}
 						}
+						scanner.close();
 						return false;
 					} catch (FileNotFoundException ex) {
 						return false;
@@ -217,6 +229,32 @@ public class Login_GUI {
 		}
 	}
 
+	
+	private String HashPassword(String password) {
+		String generatedPassword = null;
+        try {
+            // Create MessageDigest instance for MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            //Add password bytes to digest
+            md.update(password.getBytes());
+            //Get the hash's bytes
+            byte[] bytes = md.digest();
+            //This bytes[] has bytes in decimal format;
+            //Convert it to hexadecimal format
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            //Get complete hashed password in hex format
+            generatedPassword = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        return generatedPassword;
+	}
 
 
 }
