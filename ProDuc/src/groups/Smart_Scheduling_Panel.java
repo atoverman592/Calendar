@@ -1,5 +1,6 @@
 package groups;
 
+import calendar.PersonalCalendar;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Dimension;
 import java.io.File;
@@ -31,7 +32,6 @@ public class Smart_Scheduling_Panel extends javax.swing.JPanel {
         endDate.setDate(new Date());
         endDate.setPreferredSize(new Dimension(150,25));
         this.endDatePanel.add(endDate);
-        
     }
 
     @SuppressWarnings("unchecked")

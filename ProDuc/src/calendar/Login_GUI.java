@@ -190,7 +190,6 @@ public class Login_GUI {
 		folder = new File(userAccountsLoction);
 
 		if (!folder.exists()) {
-                    System.out.println("g");
 			return false;
 		} else {
 			

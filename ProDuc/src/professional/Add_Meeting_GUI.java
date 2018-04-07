@@ -1,20 +1,26 @@
 package professional;
 
+import calendar.Event;
+import calendar.PersonalCalendar;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Dimension;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JFrame;
 
 public class Add_Meeting_GUI extends javax.swing.JPanel {
     JFrame frame;
+    PersonalCalendar personalCalendar;
+    JDateChooser dateChooser;
     
-    public Add_Meeting_GUI(JFrame frame) {
+    public Add_Meeting_GUI(JFrame frame, PersonalCalendar pc) {
         this.frame = frame;
         initComponents();
-        JDateChooser dateChooser = new JDateChooser();
+        dateChooser = new JDateChooser();
         dateChooser.setDate(new Date());
         dateChooser.setPreferredSize(new Dimension(150,25));
         this.datePanel.add(dateChooser);
+        personalCalendar = pc;    
     }
 
     @SuppressWarnings("unchecked")
@@ -29,16 +35,16 @@ public class Add_Meeting_GUI extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        agendaTextArea = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        minutesTextArea = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jPanel6 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        acceptButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(130, 206, 250));
 
@@ -62,9 +68,9 @@ public class Add_Meeting_GUI extends javax.swing.JPanel {
         jLabel3.setText("Agenda: ");
         jPanel3.add(jLabel3);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        agendaTextArea.setColumns(20);
+        agendaTextArea.setRows(5);
+        jScrollPane1.setViewportView(agendaTextArea);
 
         jPanel3.add(jScrollPane1);
 
@@ -73,9 +79,9 @@ public class Add_Meeting_GUI extends javax.swing.JPanel {
         jLabel4.setText("Minutes: ");
         jPanel4.add(jLabel4);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        minutesTextArea.setColumns(20);
+        minutesTextArea.setRows(5);
+        jScrollPane2.setViewportView(minutesTextArea);
 
         jPanel4.add(jScrollPane2);
 
@@ -117,15 +123,25 @@ public class Add_Meeting_GUI extends javax.swing.JPanel {
 
         jPanel6.setBackground(new java.awt.Color(130, 206, 250));
 
-        jButton1.setBackground(new java.awt.Color(255, 215, 0));
-        jButton1.setText("Accept");
-        jButton1.setPreferredSize(new java.awt.Dimension(120, 48));
-        jPanel6.add(jButton1);
+        acceptButton.setBackground(new java.awt.Color(255, 215, 0));
+        acceptButton.setText("Accept");
+        acceptButton.setPreferredSize(new java.awt.Dimension(120, 48));
+        acceptButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                acceptButtonMouseClicked(evt);
+            }
+        });
+        jPanel6.add(acceptButton);
 
-        jButton2.setBackground(new java.awt.Color(255, 215, 0));
-        jButton2.setText("Cancel");
-        jButton2.setPreferredSize(new java.awt.Dimension(120, 48));
-        jPanel6.add(jButton2);
+        cancelButton.setBackground(new java.awt.Color(255, 215, 0));
+        cancelButton.setText("Cancel");
+        cancelButton.setPreferredSize(new java.awt.Dimension(120, 48));
+        cancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelButtonMouseClicked(evt);
+            }
+        });
+        jPanel6.add(cancelButton);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -146,11 +162,34 @@ public class Add_Meeting_GUI extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void acceptButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acceptButtonMouseClicked
+        Calendar c = Calendar.getInstance();
+        c.setTime(dateChooser.getDate());
+        String month = String.valueOf(c.get(Calendar.MONTH)+1);
+        String dayOfMonth = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
+        String year = String.valueOf(c.get(Calendar.YEAR));
+        
+        System.out.println(month);
+        System.out.println(dayOfMonth);
+        System.out.println(year);
+        personalCalendar.getYearList().get(c.get(Calendar.YEAR)-2018)
+                .getMothList().get(c.get(Calendar.MONTH))
+                .getDayList().get(c.get(Calendar.DAY_OF_MONTH)-1)
+                .addEvent(new Event("Meeting", dateChooser.getDate(), this.agendaTextArea.getText()));
+        
+        frame.dispose();
+    }//GEN-LAST:event_acceptButtonMouseClicked
+
+    private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked
+        frame.dispose();
+    }//GEN-LAST:event_cancelButtonMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton acceptButton;
+    private javax.swing.JTextArea agendaTextArea;
+    private javax.swing.JButton cancelButton;
     private javax.swing.JPanel datePanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -164,7 +203,6 @@ public class Add_Meeting_GUI extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea minutesTextArea;
     // End of variables declaration//GEN-END:variables
 }

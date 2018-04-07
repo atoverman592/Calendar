@@ -459,7 +459,7 @@ public class Calendar_GUI {
 					JFrame addMeetingFrame = new JFrame();
 					addMeetingFrame.setTitle("ProDuc");
 					addMeetingFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(largeLogo));
-					addMeetingFrame.getContentPane().add(new Add_Meeting_GUI(addMeetingFrame));
+					addMeetingFrame.getContentPane().add(new Add_Meeting_GUI(addMeetingFrame, calendar));
 					addMeetingFrame.pack();
 					addMeetingFrame.setVisible(true);
 				}
