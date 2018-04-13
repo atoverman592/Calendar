@@ -32,6 +32,11 @@ public class Event implements Serializable{
 		startTime = newStartTime;
 		description = newDescription;
 	}
+	
+/*	public Event(String newTitle, String newDescription) {
+		title = newTitle;
+		description = newDescription; 
+	}*/
         
 	public String getTitle() {
 		return title;

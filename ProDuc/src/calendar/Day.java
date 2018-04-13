@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
+import personal.Notes;
+
 public class Day implements Serializable {
 	ArrayList<Event> eventList;
 	int dayNum;

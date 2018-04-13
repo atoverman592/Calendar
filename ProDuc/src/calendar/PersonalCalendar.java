@@ -3,9 +3,13 @@ package calendar;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import personal.Notes;
+
 public class PersonalCalendar implements Serializable{
 
-	ArrayList<Year> yearList;
+	private ArrayList<Year> yearList;
+
+	private ArrayList<Notes> noteList = new ArrayList<Notes>();
 
 	public PersonalCalendar() {
             yearList = new ArrayList<Year>();
@@ -20,5 +24,12 @@ public class PersonalCalendar implements Serializable{
 
 	public ArrayList<Year> getYearList() {
 		return yearList;
+	}
+	
+	public boolean addNote(Notes note) {
+		boolean added = false;
+		noteList.add(note);
+		added = true;
+		return added;
 	}
 }

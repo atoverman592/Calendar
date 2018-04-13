@@ -1,13 +1,21 @@
 package personal;
 
+import java.util.Calendar;
+
 import javax.swing.JFrame;
+
+import calendar.PersonalCalendar;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Add_Notes_GUI extends javax.swing.JPanel {
     JFrame frame; 
+    PersonalCalendar personalCalendar;
 
-    public Add_Notes_GUI(JFrame frame) {
+    public Add_Notes_GUI(JFrame frame, PersonalCalendar pc) {
         this.frame = frame; 
         initComponents();
+        personalCalendar = pc; 
     }
 
     @SuppressWarnings("unchecked")
@@ -19,12 +27,31 @@ public class Add_Notes_GUI extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
+        noteText = new javax.swing.JTextArea();
+        noteTitle = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jButton2.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		frame.dispose(); 
+        	}
+        });
         jButton1 = new javax.swing.JButton();
+        jButton1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+                Calendar c = Calendar.getInstance();
+                String month = String.valueOf(c.get(Calendar.MONTH)+1);
+                String dayOfMonth = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
+                String year = String.valueOf(c.get(Calendar.YEAR));
+                
+                personalCalendar.getYearList().get(c.get(Calendar.YEAR)-2018)
+                        .getMothList().get(c.get(Calendar.MONTH))
+                        .getDayList().get(c.get(Calendar.DAY_OF_MONTH)-1);
+                        personalCalendar.addNote(new Notes(noteTitle.getText(), noteText.getText()));
+                frame.dispose();
+        	}
+        });
 
         jScrollPane2.setViewportView(jEditorPane1);
 
@@ -51,9 +78,9 @@ public class Add_Notes_GUI extends javax.swing.JPanel {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
         );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        noteText.setColumns(20);
+        noteText.setRows(5);
+        jScrollPane1.setViewportView(noteText);
 
         jLabel2.setText("Title:");
 
@@ -65,6 +92,8 @@ public class Add_Notes_GUI extends javax.swing.JPanel {
         jButton1.setBackground(new java.awt.Color(255, 215, 0));
         jButton1.setText("Save");
         jButton1.setToolTipText("");
+        
+        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -90,7 +119,7 @@ public class Add_Notes_GUI extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(noteTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(22, 22, 22)))))
                 .addContainerGap())
         );
@@ -101,7 +130,7 @@ public class Add_Notes_GUI extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(noteTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -118,7 +147,7 @@ public class Add_Notes_GUI extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -129,7 +158,7 @@ public class Add_Notes_GUI extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextArea noteText;
+    private javax.swing.JTextField noteTitle;
     // End of variables declaration//GEN-END:variables
 }

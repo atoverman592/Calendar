@@ -2,20 +2,98 @@ package personal;
 
 import com.toedter.calendar.JDateChooser;
 import java.awt.Dimension;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JFrame;
+import calendar.Event;
+import calendar.PersonalCalendar;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent; 
 
 public class Add_Budget_GUI extends javax.swing.JPanel {
     JFrame frame;
+    PersonalCalendar personalCalendar;
+    JDateChooser dateChooser; 
+    
 
-    public Add_Budget_GUI(JFrame frame) {
+    public Add_Budget_GUI(JFrame frame, PersonalCalendar pc) {
         this.frame = frame; 
         initComponents();
         JDateChooser dateChooser = new JDateChooser();
         dateChooser.setDate(new Date());
         dateChooser.setPreferredSize(new Dimension(150,25));
         this.datePanel.add(dateChooser);
-    }
+        personalCalendar = pc;
+        
+        GroupLayout groupLayout = new GroupLayout(this);
+        groupLayout.setHorizontalGroup(
+        	groupLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(groupLayout.createSequentialGroup()
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(12)
+        					.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, 426, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(12)
+        					.addComponent(datePanel, GroupLayout.PREFERRED_SIZE, 438, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(83)
+        					.addComponent(jLabel4)
+        					.addGap(30)
+        					.addComponent(currentBudget, GroupLayout.PREFERRED_SIZE, 184, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(61)
+        					.addComponent(jLabel5)
+        					.addGap(38)
+        					.addComponent(currentExpenses, GroupLayout.PREFERRED_SIZE, 184, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(61)
+        					.addComponent(jLabel6)
+        					.addGap(30)
+        					.addComponent(amountRemaining, GroupLayout.PREFERRED_SIZE, 184, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(112)
+        					.addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+        					.addGap(31)
+        					.addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)))
+        			.addGap(28))
+        );
+        groupLayout.setVerticalGroup(
+        	groupLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(groupLayout.createSequentialGroup()
+        			.addGap(13)
+        			.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addGap(13)
+        			.addComponent(datePanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addGap(7)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(3)
+        					.addComponent(jLabel4))
+        				.addComponent(currentBudget, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addGap(23)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(15)
+        					.addComponent(jLabel5))
+        				.addComponent(currentExpenses, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
+        			.addGap(11)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(3)
+        					.addComponent(jLabel6))
+        				.addComponent(amountRemaining, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addGap(18)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)))
+        );
+        setLayout(groupLayout);; 
+   }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -26,16 +104,37 @@ public class Add_Budget_GUI extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        currentExpenses = new JTextPane();
+        currentBudget = new javax.swing.JTextField();
+        amountRemaining = new javax.swing.JTextField();
         datePanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jButton1 = new javax.swing.JButton();
+        jButton1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        		frame.dispose();
+        	}
+        });
+        jButton2 = new javax.swing.JButton();
+        jButton2.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        		Calendar c = Calendar.getInstance();
+                c.setTime(dateChooser.getDate());
+                String month = String.valueOf(c.get(Calendar.MONTH)+1);
+                String dayOfMonth = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
+                String year = String.valueOf(c.get(Calendar.YEAR));
+                
+                personalCalendar.getYearList().get(c.get(Calendar.YEAR)-2018)
+                        .getMothList().get(c.get(Calendar.MONTH))
+                        .getDayList().get(c.get(Calendar.DAY_OF_MONTH)-1)
+                        .addEvent(new Budget("Budget", dateChooser.getDate(), currentBudget.getText(), 
+                        		currentExpenses.getText(), amountRemaining.getText()));
+                frame.dispose();
+        	}
+        });
+
 
         jLabel2.setText("Week of: ");
 
@@ -75,13 +174,6 @@ public class Add_Budget_GUI extends javax.swing.JPanel {
         jButton2.setMinimumSize(new java.awt.Dimension(71, 25));
         jButton2.setPreferredSize(new java.awt.Dimension(71, 25));
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "$0.00", "$0.00" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
-
         jLabel6.setText("Amount Remaining:");
 
         datePanel.setBackground(new java.awt.Color(130, 206, 250));
@@ -108,70 +200,23 @@ public class Add_Budget_GUI extends javax.swing.JPanel {
                     .addComponent(jLabel7))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 59, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(91, 91, 91))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(66, 66, 66))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap())))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
-                        .addContainerGap())))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(datePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(datePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
-        );
     }// </editor-fold>//GEN-END:initComponents
+    
+/*    private void acceptButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acceptButtonMouseClicked
+        Calendar c = Calendar.getInstance();
+        c.setTime(dateChooser.getDate());
+        String month = String.valueOf(c.get(Calendar.MONTH)+1);
+        String dayOfMonth = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
+        String year = String.valueOf(c.get(Calendar.YEAR));
+        
+        personalCalendar.getYearList().get(c.get(Calendar.YEAR)-2018)
+                .getMothList().get(c.get(Calendar.MONTH))
+                .getDayList().get(c.get(Calendar.DAY_OF_MONTH)-1)
+                .addEvent(new Budget("Budget", dateChooser.getDate(), this.currentBudget.getText(), 
+                		this.currentExpenses.getText(), this.amountRemaining.getText()));
+        frame.dispose();
+    }*/
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -185,10 +230,9 @@ public class Add_Budget_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField currentBudget;
+    private javax.swing.JTextField amountRemaining;
+    private JTextPane currentExpenses;
     // End of variables declaration//GEN-END:variables
 }

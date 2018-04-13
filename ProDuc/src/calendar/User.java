@@ -1,6 +1,9 @@
 package calendar;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import personal.*;
 
 public class User implements Serializable{
 
