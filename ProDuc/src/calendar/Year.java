@@ -50,10 +50,8 @@ public class Year implements Serializable{
 			monthList.add(new Month(31));
 		}
 		
-		semesterList.add(new Semester("Spring"));
-		semesterList.add(new Semester("Summer"));
-		semesterList.add(new Semester("Fall"));
-		semesterList.add(new Semester("Winter"));
+		semesterList.add(new Semester("Spring", 4, 5, 1, 5, year, year));
+		semesterList.add(new Semester("Fall", 12, 17, 8, 12, year, year));
 	}
 	
 	public ArrayList<Month> getMothList() {

@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 
 public class Groups_GUI {
@@ -23,14 +24,14 @@ public class Groups_GUI {
 	
 	public Groups_GUI() {
 		initialize();
-		try {
-			this.addGroups.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			this.addGroups.setVisible(true);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 	}
 
-	private void initialize() {
+	public JFrame initialize() {
 		addGroups = new JFrame();
 		addGroups.getContentPane().setBackground(new Color(135, 206, 250));
 		addGroups.setBounds(100, 100, 450, 300);
@@ -198,12 +199,14 @@ public class Groups_GUI {
 		JButton btnReturnToCalendar = new JButton("Return to Calendar");
 		btnReturnToCalendar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				addGroups.dispose();
+				addGroups.dispatchEvent(new WindowEvent(addGroups, WindowEvent.WINDOW_CLOSING));
 			}
 		});
 		btnReturnToCalendar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnReturnToCalendar.setBackground(new Color(255, 215, 0));
 		btnReturnToCalendar.setBounds(68, 496, 286, 98);
 		panel_3.add(btnReturnToCalendar);
+		
+		return addGroups;
 	}
 }

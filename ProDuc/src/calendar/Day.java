@@ -14,7 +14,7 @@ public class Day implements Serializable {
 		eventList = new ArrayList<Event>();
 		dayNum = n;
 		
-		boolean testFill = true;
+		boolean testFill = false;
 		if (testFill) {
 			Random rand = new Random();
 			int random = rand.nextInt(6);

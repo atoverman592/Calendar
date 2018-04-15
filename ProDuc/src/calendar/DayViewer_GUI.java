@@ -49,18 +49,17 @@ public class DayViewer_GUI {
 	 * Create the application.
 	 */
 	public DayViewer_GUI(Day day, Calendar cal) {
-		initialize(day, cal);
-		try {
-			this.frame.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			
 	}
 
+	
+	public boolean exists() {
+		return frame.isVisible();
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(Day day, Calendar cal) {
+	public JFrame initialize(Day day, Calendar cal) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 475, 475);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -142,6 +141,16 @@ public class DayViewer_GUI {
 			panel_1.add(lblTestLabel, gbc_lblTestLabel);
 
 			JButton btnEdit = new JButton("View");
+			btnEdit.putClientProperty("index", i);
+			btnEdit.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					day.getEventList().get((Integer)((JButton)e.getSource()).getClientProperty("index"));
+					
+				}
+				
+			});
 			GridBagConstraints gbc_btnEdit = new GridBagConstraints();
 			gbc_btnEdit.insets = new Insets(0, 0, 0, 5);
 			gbc_btnEdit.gridx = 1;
@@ -169,5 +178,7 @@ public class DayViewer_GUI {
 		panel.add(btnAddEvent, gbc_btnAddEvent);
 		btnAddEvent.setBackground(new Color(255, 215, 0));
 		btnAddEvent.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		return frame;
 	}
 }

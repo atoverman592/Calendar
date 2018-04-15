@@ -1,4 +1,4 @@
-package ProDuc.src.storage;
+package storage;
 
 public class ProDucData {
 

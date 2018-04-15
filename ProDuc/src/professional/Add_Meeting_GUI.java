@@ -4,6 +4,7 @@ import calendar.Event;
 import calendar.PersonalCalendar;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Dimension;
+import java.awt.event.WindowEvent;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JFrame;
@@ -177,11 +178,11 @@ public class Add_Meeting_GUI extends javax.swing.JPanel {
                 .getDayList().get(c.get(Calendar.DAY_OF_MONTH)-1)
                 .addEvent(new Event("Meeting", dateChooser.getDate(), this.agendaTextArea.getText()));
         
-        frame.dispose();
+        frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_acceptButtonMouseClicked
 
     private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked
-        frame.dispose();
+    	frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_cancelButtonMouseClicked
 
 

@@ -48,9 +48,10 @@ public class Calendar_GUI {
 	private JPanel profesionalPanel = null;
 	private JPanel studentPanel =  null;
 	private PersonalCalendar calendar = null;
+	private User users = null;
 	
 	public Calendar_GUI(User user) {
-		
+		users = user;
 		initialize(user);
 		try {
 			this.frmProduc.setVisible(true);
@@ -71,14 +72,24 @@ public class Calendar_GUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Groups_GUI();
+				Groups_GUI group = new Groups_GUI();
+				JFrame groupFrame = group.initialize();
+				groupFrame.setVisible(true);
+				groupFrame.addWindowListener(new WindowAdapter() {
+					
+					@Override
+					public void windowClosing(WindowEvent e) {
+						groupFrame.dispose();
+						refreshView();
+					}
+				});
 			}
 
 		});
 
 		btnGroups.setBackground(new Color(70, 130, 180));
 		btnGroups.setBounds(1380, 91, 100, 30);
-		frmProduc.add(btnGroups);
+		frmProduc.getContentPane().add(btnGroups);
 
 		UIManager.put("TabbedPane.selected", new Color(191, 161, 0));
 
@@ -361,8 +372,22 @@ public class Calendar_GUI {
 						public void actionPerformed(ActionEvent arg0) {
 
 							DayViewer_GUI dayView = new DayViewer_GUI(tempDay, cal2);
-							refreshMainView();
+							JFrame dayFrame = dayView.initialize(tempDay, cal2);
 							
+							
+							try {
+								dayFrame.setVisible(true);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+							dayFrame.addWindowListener(new WindowAdapter() {
+								
+								@Override
+								public void windowClosing(WindowEvent e) {
+									dayFrame.dispose();
+									refreshView();
+								}
+							});
 							
 						}
 
@@ -445,6 +470,29 @@ public class Calendar_GUI {
 					semesterPanel.get(j).setBackground(new Color(70, 130, 180));
 					semesterPanel.get(j).setBorder(null);
 					semesterPanel.get(j).setLayout(null);
+					JButton button = new JButton("Add Class");
+					button.setBackground(new Color(135, 206, 250));
+					button.setBounds(25, 25, 120, 22);
+					
+					button.addActionListener(new ActionListener() {
+
+						@Override
+						public void actionPerformed(ActionEvent arg0) {
+							Add_Class_GUI classGUI = new Add_Class_GUI(users);
+							JFrame classFrame = classGUI.initialize();
+							classFrame.setVisible(true);
+							classFrame.addWindowListener(new WindowAdapter() {
+								
+								@Override
+								public void windowClosing(WindowEvent e) {
+									classFrame.dispose();
+									refreshView();
+								}
+							});
+						}
+						
+					});
+					semesterPanel.get(j).add(button);
 					semesterTabbedPane.get(i).addTab(calendar.getYearList().get(i).getSemesterList().get(j).getTitle(),
 							null, semesterPanel.get(j), null);
 				}
@@ -475,6 +523,15 @@ public class Calendar_GUI {
 					addMeetingFrame.getContentPane().add(new Add_Meeting_GUI(addMeetingFrame, calendar));
 					addMeetingFrame.pack();
 					addMeetingFrame.setVisible(true);
+					
+					addMeetingFrame.addWindowListener(new WindowAdapter() {
+						
+						@Override
+						public void windowClosing(WindowEvent e) {
+							addMeetingFrame.dispose();
+							refreshView();
+						}
+					});
 				}
 			});
 
@@ -642,9 +699,13 @@ public class Calendar_GUI {
 		return personalPanel;
 	}
 	
-	public void refreshMainView() {
-		frmProduc.getContentPane().remove(calendarView);
-		frmProduc.getContentPane().add(addCalendarView(calendar));
-		frmProduc.repaint();
+	public void refreshView() {
+//		frmProduc.getContentPane().remove(calendarView);
+//		frmProduc.getContentPane().add(addCalendarView(calendar));
+//		frmProduc.setVisible(false);
+//		frmProduc.repaint();
+//		frmProduc.setVisible(true);
+		new Calendar_GUI(users);
+		frmProduc.dispose();
 	}
 }

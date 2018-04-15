@@ -2,6 +2,9 @@ package calendar;
 
 import java.awt.EventQueue;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -22,6 +25,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -56,6 +61,7 @@ public class Login_GUI {
 	}
 
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.setTitle("ProDuc");
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Login_GUI.class.getResource(largeLogo)));
