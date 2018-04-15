@@ -23,7 +23,7 @@ public class Add_Budget_GUI extends javax.swing.JPanel {
     public Add_Budget_GUI(JFrame frame, PersonalCalendar pc) {
         this.frame = frame; 
         initComponents();
-        JDateChooser dateChooser = new JDateChooser();
+        dateChooser = new JDateChooser();
         dateChooser.setDate(new Date());
         dateChooser.setPreferredSize(new Dimension(150,25));
         this.datePanel.add(dateChooser);

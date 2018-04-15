@@ -22,7 +22,7 @@ public class Add_Fitness_GUI extends javax.swing.JPanel {
     public Add_Fitness_GUI(JFrame frame, PersonalCalendar pc) {
         this.frame = frame; 
         initComponents();
-        JDateChooser dateChooser = new JDateChooser();
+        dateChooser = new JDateChooser();
         dateChooser.setDate(new Date());
         dateChooser.setPreferredSize(new Dimension(150,25));
         this.datePanel.add(dateChooser);
@@ -45,7 +45,7 @@ public class Add_Fitness_GUI extends javax.swing.JPanel {
                 personalCalendar.getYearList().get(c.get(Calendar.YEAR)-2018)
                         .getMothList().get(c.get(Calendar.MONTH))
                         .getDayList().get(c.get(Calendar.DAY_OF_MONTH)-1)
-                        .addEvent(new Budget("Budget", dateChooser.getDate(), goals.getText(), 
+                        .addEvent(new Fitness("Fitness", dateChooser.getDate(), goals.getText(), 
                         		workoutPlan.getText()));
                 frame.dispose();
         	}

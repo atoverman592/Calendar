@@ -575,11 +575,15 @@ public class Calendar_GUI {
 			personalTabbedPane.setBackgroundAt(2, new Color(255, 215, 0));
 		}
 
-		JButton btnNotes = new JButton("Add Fitness");
+		JButton btnNotes = new JButton("Add Notes");
 		btnNotes.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Add_Notes_GUI(frmProduc, calendar);
+				JFrame noteFrame = new JFrame();
+				noteFrame.add(new Add_Notes_GUI(noteFrame, calendar));
+				noteFrame.pack();
+				noteFrame.setLocationRelativeTo(null);
+				noteFrame.setVisible(true);
 			}
 
 		});
@@ -609,7 +613,12 @@ public class Calendar_GUI {
 		btnFitness.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Add_Fitness_GUI(frmProduc, calendar);
+				JFrame fitFrame = new JFrame();
+				fitFrame.add(new Add_Fitness_GUI(fitFrame, calendar));
+				fitFrame.pack();
+				fitFrame.setLocationRelativeTo(null);
+				fitFrame.setVisible(true);
+				
 			}
 
 		});
@@ -639,7 +648,11 @@ public class Calendar_GUI {
 		btnBudget.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Add_Budget_GUI(frmProduc, calendar);
+				JFrame budgetFrame = new JFrame();
+				budgetFrame.add(new Add_Budget_GUI(budgetFrame, calendar));
+				budgetFrame.pack();
+				budgetFrame.setLocationRelativeTo(null);
+				budgetFrame.setVisible(true);
 			}
 
 		});

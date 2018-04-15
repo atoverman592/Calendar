@@ -78,7 +78,7 @@ public class Groups_GUI {
 		addGroups.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("Group Name");
+		JLabel lblNewLabel_2 = new JLabel("CSC 490");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setBounds(12, 13, 136, 35);
@@ -102,12 +102,6 @@ public class Groups_GUI {
 		panel_1.add(btnNewButton);
 		
 		JButton btnLeaveGroup = new JButton("Leave Group");
-		btnLeaveGroup.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showConfirmDialog(addGroups, "Are you sure you want to leave this group?", "Confirm Leaving Group",
-						JOptionPane.OK_CANCEL_OPTION);
-			}
-		});
 		btnLeaveGroup.setBackground(new Color(255, 215, 0));
 		btnLeaveGroup.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnLeaveGroup.setBounds(658, 64, 147, 35);
@@ -125,13 +119,28 @@ public class Groups_GUI {
 		btnDeleteGroup.setBounds(658, 112, 147, 35);
 		panel_1.add(btnDeleteGroup);
 		
+		btnLeaveGroup.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int confirm = JOptionPane.showConfirmDialog(addGroups, "Are you sure you want to leave this group?", "Confirm Leaving Group",
+						JOptionPane.OK_CANCEL_OPTION);
+				if (confirm == JOptionPane.YES_OPTION) {
+					addGroups.remove(panel_1);
+					addGroups.remove(lblNewLabel_2);
+					addGroups.remove(btnNewButton);
+					addGroups.remove(btnLeaveGroup);
+					addGroups.remove(btnDeleteGroup);
+					addGroups.repaint();
+				}
+			}
+		});
+		
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
 		panel_2.setBackground(new Color(70, 130, 180));
 		panel_2.setBounds(50, 388, 817, 160);
 		addGroups.getContentPane().add(panel_2);
 		
-		JLabel label = new JLabel("Group Name");
+		JLabel label = new JLabel("testGroup");
 		label.setForeground(Color.WHITE);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		label.setBounds(12, 13, 136, 35);
@@ -161,6 +170,21 @@ public class Groups_GUI {
 		button_2.setBounds(658, 112, 147, 35);
 		panel_2.add(button_2);
 		
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int confirm = JOptionPane.showConfirmDialog(addGroups, "Are you sure you want to delete this group?","Confirm Deleting Group",
+						JOptionPane.OK_CANCEL_OPTION);
+				if (confirm == JOptionPane.YES_OPTION) {
+					addGroups.remove(panel_2);
+					addGroups.remove(label);
+					addGroups.remove(button);
+					addGroups.remove(button_1);
+					addGroups.remove(button_2);
+					addGroups.repaint();
+				}
+			}
+		});
+		
 		Font font = new Font("Tahoma", Font.PLAIN, 15); 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(135, 206, 250));
@@ -189,6 +213,7 @@ public class Groups_GUI {
                                 frame.add(new Smart_Scheduling_Panel(frame));
                                 frame.pack();
                                 frame.setVisible(true);
+                                frame.setLocationRelativeTo(null);
 			}
 		});
 		btnEnableSmartScheduling.setFont(new Font("Tahoma", Font.PLAIN, 15));

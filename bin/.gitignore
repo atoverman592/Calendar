@@ -4,3 +4,5 @@
 .DS_Store
 /NetBeans/ProDuc/nbproject/private/
 /NetBeans/ProDuc/build/
+/.gitignore
+/ProDuc/
