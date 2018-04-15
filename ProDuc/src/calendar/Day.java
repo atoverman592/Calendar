@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
-import personal.Notes;
 
 public class Day implements Serializable {
 	ArrayList<Event> eventList;
@@ -15,7 +14,7 @@ public class Day implements Serializable {
 		eventList = new ArrayList<Event>();
 		dayNum = n;
 		
-		boolean testFill = false;
+		boolean testFill = true;
 		if (testFill) {
 			Random rand = new Random();
 			int random = rand.nextInt(6);
@@ -25,8 +24,8 @@ public class Day implements Serializable {
 		}
 	}
 
-	public void addEvent(Event e) {
-		eventList.add(e);
+	public void addEvent(Event event) {
+		eventList.add(event);
 	}
 
 	public void removeEvent(Event e) {

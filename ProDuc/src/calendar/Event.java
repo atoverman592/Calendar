@@ -9,6 +9,12 @@ public class Event implements Serializable{
 	Date endTime = null;
 	String description = null;
 
+	
+	public Event(String newTitle, String newDescription) {
+		title = newTitle;
+		description = newDescription;
+	}
+	
 	public Event(String newTitle, Date newStartTime) {
 		title = newTitle;
 		startTime = newStartTime;

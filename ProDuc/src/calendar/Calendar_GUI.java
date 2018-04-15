@@ -43,6 +43,12 @@ public class Calendar_GUI {
 	private String smallLogo = "/calendar/ProDuc Logo v1 70x70.png";
 	private String largeLogo = "/calendar/ProDuc Logo v1.png";
 
+	private JTabbedPane calendarView = null;
+	private JPanel personalPanel = null;
+	private JPanel profesionalPanel = null;
+	private JPanel studentPanel =  null;
+	private PersonalCalendar calendar = null;
+	
 	public Calendar_GUI(User user) {
 		
 		initialize(user);
@@ -54,7 +60,7 @@ public class Calendar_GUI {
 	}
 
 	private void initialize(User user) {
-		PersonalCalendar calendar = user.getCalendar();
+		calendar = user.getCalendar();
 		frmProduc = new JFrame();
 		frmProduc.getContentPane().setBackground(new Color(135, 206, 250));
 		frmProduc.getContentPane().setLayout(null);
@@ -109,20 +115,24 @@ public class Calendar_GUI {
 		lblProduc.setBounds(0, 0, 358, 50);
 		panel_2.add(lblProduc);
 
-		frmProduc.getContentPane().add(addCalendarView(calendar));
-
+		calendarView = addCalendarView(calendar);
+		
+		frmProduc.getContentPane().add(calendarView);
 		{
 			JTabbedPane moduleTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 			moduleTabbedPane.setBounds(1125, 106, 358, 754);
 			frmProduc.getContentPane().add(moduleTabbedPane);
 
-			moduleTabbedPane.addTab("Personal", null, addPersonalPanel(calendar), null);
+			personalPanel = addPersonalPanel(calendar);
+			moduleTabbedPane.addTab("Personal", null, personalPanel, null);
 			moduleTabbedPane.setBackgroundAt(0, new Color(255, 215, 0));
-
-			moduleTabbedPane.addTab("Professional", null, addProfessionalPanel(calendar), null);
+			
+			profesionalPanel = addProfessionalPanel(calendar);
+			moduleTabbedPane.addTab("Professional", null, profesionalPanel, null);
 			moduleTabbedPane.setBackgroundAt(1, new Color(255, 215, 0));
 
-			moduleTabbedPane.addTab("Student", null, addStudentPanel(calendar), null);
+			studentPanel = addStudentPanel(calendar);
+			moduleTabbedPane.addTab("Student", null, studentPanel, null);
 			moduleTabbedPane.setBackgroundAt(2, new Color(255, 215, 0));
 		}
 
@@ -350,7 +360,10 @@ public class Calendar_GUI {
 						@Override
 						public void actionPerformed(ActionEvent arg0) {
 
-							new DayViewer_GUI(tempDay, cal2);
+							DayViewer_GUI dayView = new DayViewer_GUI(tempDay, cal2);
+							refreshMainView();
+							
+							
 						}
 
 					});
@@ -627,5 +640,11 @@ public class Calendar_GUI {
 		personalPanel.add(btnPersonalEvent);
 		
 		return personalPanel;
+	}
+	
+	public void refreshMainView() {
+		frmProduc.getContentPane().remove(calendarView);
+		frmProduc.getContentPane().add(addCalendarView(calendar));
+		frmProduc.repaint();
 	}
 }

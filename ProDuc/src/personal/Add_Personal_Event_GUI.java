@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.SwingConstants;
 
-import calendar.PersonalCalendar;
+import calendar.*;
 
 import javax.swing.JTextPane;
 import javax.swing.JButton;
@@ -158,7 +158,7 @@ public class Add_Personal_Event_GUI {
 		        personalCalendar.getYearList().get(c.get(Calendar.YEAR)-2018)
 		                .getMothList().get(c.get(Calendar.MONTH))
 		                .getDayList().get(c.get(Calendar.DAY_OF_MONTH)-1)
-//		                .addEvent(new Event("Personal Event", description.getText()));
+		                .getEventList().add(new calendar.Event("Personal Event", description.getText()));
 		        personalEvent.dispose();
 			}
 		});
